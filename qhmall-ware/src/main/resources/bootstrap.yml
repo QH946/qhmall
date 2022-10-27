@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: qhmall-ware
+
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+#        namespace: 790ba620-a506-40ff-ac16-b91285acb58b
+#        group: dev
+
+

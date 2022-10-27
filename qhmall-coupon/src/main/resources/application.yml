@@ -1,11 +1,11 @@
 server:
-  port: 10000
+  port: 7000
 
 spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/qhmall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/qhmall_sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   cloud:
@@ -13,20 +13,12 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
   application:
-    name: qhmall-product
-
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
+    name: qhmall-coupon
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
-      logic-delete-value: 1
-      logic-not-delete-value: 0
 
-logging:
-  level:
-    com.qh.qhmall: debug
 
