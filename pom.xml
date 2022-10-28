@@ -19,6 +19,7 @@
         <module>renren-fast</module>
         <module>renren-generator</module>
         <module>qhmall-common</module>
+        <module>qhmall-gateway</module>
     </modules>
 
 

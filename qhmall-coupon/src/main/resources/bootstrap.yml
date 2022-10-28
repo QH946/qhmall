@@ -1,9 +1,14 @@
+server:
+  port: 7000
+
 spring:
   application:
     name: qhmall-coupon
 
   cloud:
     nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
       config:
         server-addr: localhost:8848
         namespace: 790ba620-a506-40ff-ac16-b91285acb58b

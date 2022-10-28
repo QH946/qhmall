@@ -1,19 +1,9 @@
-server:
-  port: 10000
-
 spring:
   datasource:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/qhmall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-  application:
-    name: qhmall-product
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
