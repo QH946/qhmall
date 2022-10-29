@@ -16,7 +16,7 @@
         <module>qhmall-order</module>
         <module>qhmall-product</module>
         <module>qhmall-ware</module>
-        <module>renren-fast</module>
+        <module>qhmall-backend</module>
         <module>renren-generator</module>
         <module>qhmall-common</module>
         <module>qhmall-gateway</module>
