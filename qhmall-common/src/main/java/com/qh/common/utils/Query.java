@@ -17,10 +17,12 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;
 
+
 /**
  * 查询参数
  *
- * @author Mark sunlightcs@gmail.com
+ * @author qh
+ * @date 2022/10/30 18:36:00
  */
 public class Query<T> {
 

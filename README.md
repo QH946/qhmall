@@ -72,20 +72,20 @@
 ## 组织结构
 
 ```
-gulimall
-├── gulimall-common -- 工具类及通用代码
+qhmall
+├── qhmall-common -- 工具类及通用代码
 ├── renren-generator -- 人人开源项目的代码生成器
-├── gulimall-auth-server -- 认证中心（社交登录、OAuth2.0）
-├── gulimall-cart -- 购物车服务
-├── gulimall-coupon -- 优惠卷服务
-├── gulimall-gateway -- 统一配置网关
-├── gulimall-order -- 订单服务
-├── gulimall-product -- 商品服务
-├── gulimall-search -- 检索服务
-├── gulimall-seckill -- 秒杀服务
-├── gulimall-third-party -- 第三方服务（对象存储、短信）
-├── gulimall-ware -- 仓储服务
-└── gulimall-member -- 会员服务
+├── qhmall-auth-server -- 认证中心（社交登录、OAuth2.0）
+├── qhmall-cart -- 购物车服务
+├── qhmall-coupon -- 优惠卷服务
+├── qhmall-gateway -- 统一配置网关
+├── qhmall-order -- 订单服务
+├── qhmall-product -- 商品服务
+├── qhmall-search -- 检索服务
+├── qhmall-seckill -- 秒杀服务
+├── qhmall-third-party -- 第三方服务（对象存储、短信）
+├── qhmall-ware -- 仓储服务
+└── qhmall-member -- 会员服务
 ```
 
 ## 技术选型
@@ -162,14 +162,14 @@ gulimall
 - 修改本机的host文件，映射域名端口至Nginx地址
 
 ```
-192.168.56.102	gulimall.com
-192.168.56.102	search.gulimall.com
-192.168.56.102  item.gulimall.com
-192.168.56.102  auth.gulimall.com
-192.168.56.102  cart.gulimall.com
-192.168.56.102  order.gulimall.com
-192.168.56.102  member.gulimall.com
-192.168.56.102  seckill.gulimall.com
+192.168.56.102	qhmall.com
+192.168.56.102	search.qhmall.com
+192.168.56.102  item.qhmall.com
+192.168.56.102  auth.qhmall.com
+192.168.56.102  cart.qhmall.com
+192.168.56.102  order.qhmall.com
+192.168.56.102  member.qhmall.com
+192.168.56.102  seckill.qhmall.com
 以上ip换成自己Linux的ip地址
 ```
 
@@ -177,15 +177,15 @@ gulimall
 
 ```
 1、在nginx.conf中添加负载均衡的配置   
-upstream gulimall{
+upstream qhmall{
 	# 网关的地址
 	server 192.168.56.1:88;
 }    
-2、在gulimall.conf中添加如下配置
+2、在qhmall.conf中添加如下配置
 server {
 	# 监听以下域名地址的80端口
     listen       80;
-    server_name  gulimall.com  *.gulimall.com hjl.mynatapp.cc;
+    server_name  qhmall.com  *.qhmall.com hjl.mynatapp.cc;
 
     #charset koi8-r;
     #access_log  /var/log/nginx/log/host.access.log  main;
@@ -197,19 +197,19 @@ server {
 
     #支付异步回调的一个配置
     location /payed/ {
-        proxy_set_header Host order.gulimall.com;        #不让请求头丢失
-        proxy_pass http://gulimall;
+        proxy_set_header Host order.qhmall.com;        #不让请求头丢失
+        proxy_pass http://qhmall;
     }
 
     location / {
         #root   /usr/share/nginx/html;
         #index  index.html index.htm;
         proxy_set_header Host $host;        #不让请求头丢失
-        proxy_pass http://gulimall;
+        proxy_pass http://qhmall;
     }
 ```
 
 或者直接用项目nginx模块替换本机nginx配置目录文件
 
 - 克隆前端项目 `renren-fast-vue` 以 `npm run dev` 方式去运行
-- 克隆整个后端项目 `gulimall` ，并导入 IDEA 中完成编译
+- 克隆整个后端项目 `qhmall` ，并导入 IDEA 中完成编译

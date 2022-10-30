@@ -1,5 +1,11 @@
 package com.qh.common.constant;
 
+/**
+ * 仓储常量
+ *
+ * @author qh
+ * @date 2022/10/30 18:32:57
+ */
 public class WareConstant {
 
     public enum  PurchaseStatusEnum{

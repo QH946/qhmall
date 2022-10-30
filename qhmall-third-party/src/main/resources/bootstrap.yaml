@@ -1,0 +1,16 @@
+server:
+  port: 30000
+
+spring:
+  application:
+    name: qhmall-third-party
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 90a6e497-bfb6-4784-8dd6-244c08b0708c
+        file-extension: yaml
+        extension-configs:
+          - data-id: oss.yaml
+            group: DEFAULT_GROUP
+            refresh: true

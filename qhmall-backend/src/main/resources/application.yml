@@ -4,10 +4,9 @@ server:
     uri-encoding: UTF-8
     max-threads: 1000
     min-spare-threads: 30
-  port: 8080
-  connection-timeout: 5000ms
+  port: 8888
   servlet:
-    context-path: /renren-fast
+    context-path: /qhmall-backend
 
 spring:
   # 环境 dev|test|prod
@@ -37,8 +36,12 @@ spring:
         min-idle: 5       # 连接池中的最小空闲连接
   mvc:
     throw-exception-if-no-handler-found: true
-    pathmatch:
-      matching-strategy: ANT_PATH_MATCHER
+  application:
+    name: qhmall-backend
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 #  resources:
 #    add-mappings: false
 

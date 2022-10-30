@@ -1,17 +1,15 @@
-/**
-  * Copyright 2019 bejson.com 
-  */
 package com.qh.common.to;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
+
 /**
- * Auto-generated: 2019-11-26 10:50:34
+ * 会员价格
  *
- * @author bejson.com (i@bejson.com)
- * @website http://www.bejson.com/java2pojo/
+ * @author qh
+ * @date 2022/10/30 18:59:34
  */
 @Data
 public class MemberPrice {

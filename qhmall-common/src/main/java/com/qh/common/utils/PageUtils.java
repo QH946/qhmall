@@ -13,10 +13,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import java.io.Serializable;
 import java.util.List;
 
+
 /**
  * 分页工具类
  *
- * @author Mark sunlightcs@gmail.com
+ * @author qh
+ * @date 2022/10/30 18:35:35
  */
 public class PageUtils implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +42,7 @@ public class PageUtils implements Serializable {
 	 * 列表数据
 	 */
 	private List<?> list;
-	
+
 	/**
 	 * 分页
 	 * @param list        列表数据
@@ -106,5 +108,5 @@ public class PageUtils implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
-	
+
 }
