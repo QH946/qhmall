@@ -37,10 +37,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      */
     @Override
     public List<CategoryEntity> listWithTree() {
-        //1、查出所有分类
+        //1查出所有分类
         List<CategoryEntity> entities = baseMapper.selectList(null);
-        //2、组装成父子的树形结构
-        //2.1）、找到所有的一级分类，给children设置子分类
+        //2组装成父子的树形结构
+        //2.1找到所有的一级分类，给children设置子分类
         return entities.stream()
                 // 过滤找出一级分类
                 .filter(categoryEntity -> categoryEntity.getParentCid() == 0)
@@ -49,6 +49,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                 // 按sort属性排序
                 .sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort())))
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 批量删除分类
+     *
+     * @param asList 正如列表
+     */
+    @Override
+    public void removeMenuByIds(List<Long> asList) {
+        // TODO  1、检查当前删除的菜单，是否被别的地方引用
+        // 逻辑删除
+        baseMapper.deleteBatchIds(asList);
     }
 
 

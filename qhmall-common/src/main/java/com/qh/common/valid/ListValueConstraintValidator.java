@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 /**
- * 列表值约束验证器
+ * 自定义校验器
  *
  * @author qh
  * @date 2022/10/30 18:37:08

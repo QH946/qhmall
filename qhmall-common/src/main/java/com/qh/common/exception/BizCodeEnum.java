@@ -1,6 +1,9 @@
 package com.qh.common.exception;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * 错误码和错误信息定义类
  * 1. 错误码定义规则为5为数字
@@ -17,6 +20,8 @@ package com.qh.common.exception;
  * @author qh
  * @date 2022/10/30 18:34:00
  */
+@Getter
+@AllArgsConstructor
 public enum BizCodeEnum {
     /**
      * 系统未知异常
@@ -39,16 +44,4 @@ public enum BizCodeEnum {
     private final int code;
     private final String msg;
 
-    BizCodeEnum(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
 }
