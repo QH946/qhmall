@@ -26,7 +26,7 @@ public class CategoryController {
     /**
      * 查出所有分类以及子分类，以树形结构组装起来
      */
-    @GetMapping("/list/tree")
+    @RequestMapping("/list/tree")
     public R list() {
         List<CategoryEntity> entities = categoryService.listWithTree();
         return R.ok().put("data", entities);
@@ -36,7 +36,7 @@ public class CategoryController {
     /**
      * 根据分类id查询商品分类
      */
-    @GetMapping("/info/{catId}")
+    @RequestMapping("/info/{catId}")
     public R info(@PathVariable("catId") Long catId) {
         CategoryEntity category = categoryService.getById(catId);
         return R.ok().put("data", category);
@@ -52,12 +52,11 @@ public class CategoryController {
     }
 
     /**
-     * 修改
+     * 修改分类
      */
     @RequestMapping("/update")
     public R update(@RequestBody CategoryEntity category) {
         categoryService.updateById(category);
-
         return R.ok();
     }
 
@@ -67,7 +66,7 @@ public class CategoryController {
      * @param category 类别
      * @return {@link R}
      */
-    @PostMapping("/update/sort")
+    @RequestMapping("/update/sort")
     public R updateSort(@RequestBody CategoryEntity[] category) {
         categoryService.updateBatchById(Arrays.asList(category));
         return R.ok();
@@ -79,7 +78,7 @@ public class CategoryController {
      * @RequestBody: 获取请求体，必须发送POST请求
      * * SpringMVC自动将请求体的数据（json），转为对应的对象
      */
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] catIds) {
         categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();

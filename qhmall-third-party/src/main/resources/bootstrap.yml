@@ -6,9 +6,11 @@ spring:
     name: qhmall-third-party
   cloud:
     nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
       config:
         server-addr: 127.0.0.1:8848
-        namespace: 90a6e497-bfb6-4784-8dd6-244c08b0708c
+        namespace: 073e7b26-949a-473c-8d2c-3bbb8ce7afe7
         file-extension: yml
         extension-configs:
           - data-id: oss.yml

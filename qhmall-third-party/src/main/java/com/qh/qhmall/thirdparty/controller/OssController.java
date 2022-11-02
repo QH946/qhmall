@@ -1,4 +1,4 @@
-package com.qh.third.party.controller;
+package com.qh.qhmall.thirdparty.controller;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.common.utils.BinaryUtil;
@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 
 @RestController
 public class OssController {
@@ -27,23 +25,22 @@ public class OssController {
     private String endpoint;
     @Value("${spring.cloud.alicloud.oss.bucket}")
     private String bucket;
+
     @Value("${spring.cloud.alicloud.access-key}")
     private String accessId;
 
-    /**
-     * Oss 获取服务端签名
-     * @return
-     */
+
     @RequestMapping("/oss/policy")
     public R policy() {
 
-        // https://qhmall-hello.oss-cn-beijing.aliyuncs.com/hahaha.jpg  host的格式为 bucketname.endpoint
-        String host = "https://" + bucket + "." + endpoint;
+
+        //https://gulimall-hello.oss-cn-beijing.aliyuncs.com/hahaha.jpg
+
+        String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
         // callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-        // String callbackUrl = "http://88.88.88.88:8888";
+//        String callbackUrl = "http://88.88.88.88:8888";
         String format = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        // 用户上传文件时指定的前缀。
-        String dir = format + "/";
+        String dir = format + "/"; // 用户上传文件时指定的前缀。
 
         Map<String, String> respMap = null;
         try {
@@ -55,7 +52,7 @@ public class OssController {
             policyConds.addConditionItem(MatchMode.StartWith, PolicyConditions.COND_KEY, dir);
 
             String postPolicy = ossClient.generatePostPolicy(expiration, policyConds);
-            byte[] binaryData = postPolicy.getBytes(StandardCharsets.UTF_8);
+            byte[] binaryData = postPolicy.getBytes("utf-8");
             String encodedPolicy = BinaryUtil.toBase64String(binaryData);
             String postSignature = ossClient.calculatePostSignature(postPolicy);
 
@@ -67,6 +64,7 @@ public class OssController {
             respMap.put("host", host);
             respMap.put("expire", String.valueOf(expireEndTime / 1000));
             // respMap.put("expire", formatISO8601Date(expiration));
+
 
         } catch (Exception e) {
             // Assert.fail(e.getMessage());

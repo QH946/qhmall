@@ -1,21 +1,18 @@
 package com.qh.qhmall.product.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.qh.qhmall.product.entity.BrandEntity;
-import com.qh.qhmall.product.service.BrandService;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
+import com.qh.common.valid.AddGroup;
+import com.qh.common.valid.UpdateGroup;
+import com.qh.common.valid.UpdateStatusGroup;
+import com.qh.qhmall.product.entity.BrandEntity;
+import com.qh.qhmall.product.service.BrandService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Map;
 
 
 /**
@@ -32,58 +29,57 @@ public class BrandController {
     private BrandService brandService;
 
     /**
-     * 列表
+     * 分页查询品牌
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:brand:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = brandService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
 
     /**
-     * 信息
+     * 查看品牌信息
      */
-    @RequestMapping("/info/{brandId}")
-    //@RequiresPermissions("product:brand:info")
-    public R info(@PathVariable("brandId") Long brandId){
-		BrandEntity brand = brandService.getById(brandId);
-
+    @RequestMapping ("/info/{brandId}")
+    public R info(@PathVariable("brandId") Long brandId) {
+        BrandEntity brand = brandService.getById(brandId);
         return R.ok().put("brand", brand);
     }
 
     /**
-     * 保存
+     * 新增品牌
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
-
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand) {
+        brandService.save(brand);
         return R.ok();
     }
 
     /**
-     * 修改
+     * 修改品牌信息
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
-		brandService.updateById(brand);
-
+    public R update(@Validated(UpdateGroup.class) @RequestBody BrandEntity brand) {
+        brandService.updateById(brand);
         return R.ok();
     }
 
     /**
-     * 删除
+     * 修改品牌状态
+     */
+    @RequestMapping("/update/status")
+    public R updateStatus(@Validated(UpdateStatusGroup.class) @RequestBody BrandEntity brand) {
+        brandService.updateById(brand);
+        return R.ok();
+    }
+
+    /**
+     * 删除品牌
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:brand:delete")
-    public R delete(@RequestBody Long[] brandIds){
-		brandService.removeByIds(Arrays.asList(brandIds));
-
+    public R delete(@RequestBody Long[] brandIds) {
+        brandService.removeByIds(Arrays.asList(brandIds));
         return R.ok();
     }
 

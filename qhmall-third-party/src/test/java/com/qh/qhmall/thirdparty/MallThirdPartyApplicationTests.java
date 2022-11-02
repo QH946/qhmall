@@ -1,10 +1,7 @@
-package com.qh;
+package com.qh.qhmall.thirdparty;
 
-import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.OSSClientBuilder;
 import com.qh.common.utils.HttpUtils;
-import com.qh.third.party.component.SmsComponent;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
@@ -22,31 +19,25 @@ class MallThirdPartyApplicationTests {
 
     @Resource
     OSSClient ossClient;
-    @Resource
-    SmsComponent smsComponent;
 
     @Test
     void contextLoads() throws FileNotFoundException {
-        ossClient.putObject("gulimall-hello", "hh.png", new FileInputStream("C:\\Users\\ZSY\\Pictures\\dubhe.png"));
+        ossClient.putObject("qhmall-hello", "hh.png", new FileInputStream("C:\\Users\\ZSY\\Pictures\\dubhe.png"));
     }
 
-    @Test
-    public void sendSmsCode() {
-        smsComponent.sendCode("13838383838", "134531");
-    }
 
     @Test
     public void testUpload() throws FileNotFoundException {
-        // Endpoint以杭州为例，其它Region请按实际情况填写。
-        String endpoint = "oss-cn-beijing.aliyuncs.com";
-        // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建。
-        String accessKeyId = "LTAI4G66cCNM2t7LKE79RaY3";
-        String accessKeySecret = "wd0KVDLCO1vVXq4q9aIPTXY7AP7rdW";
-        // 创建OSSClient实例。
-        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
-        // 上传文件流。
-        InputStream inputStream = new FileInputStream("C:\\Users\\Jerry\\Desktop\\1.png");
-        ossClient.putObject("gulimall-clouds", "1.png", inputStream);
+//        // Endpoint以北京为例，其它Region请按实际情况填写。
+//        String endpoint = "oss-cn-beijing.aliyuncs.com";
+//        // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建。
+//        String accessKeyId = "LTAI5t5ZBiEYocB7qkRRRvkd";
+//        String accessKeySecret = "CB5M5aJdkp6dQYYfVBM41kx1nH5EQy";
+//        // 创建OSSClient实例。
+//        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+//        // 上传文件流。
+        InputStream inputStream = new FileInputStream("D:\\05_Doc\\Mall_Resources\\28f296629cca865e.jpg");
+        ossClient.putObject("qhmall-aurora", "28f296629cca865e.jpg", inputStream);
         // 关闭OSSClient。
         ossClient.shutdown();
         System.out.println("上传成功...");
