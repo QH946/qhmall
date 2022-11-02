@@ -52,11 +52,11 @@ public class CategoryController {
     }
 
     /**
-     * 修改分类
+     * 级联更新分类的所有关联的数据
      */
     @RequestMapping("/update")
     public R update(@RequestBody CategoryEntity category) {
-        categoryService.updateById(category);
+        categoryService.updateCascade(category);
         return R.ok();
     }
 

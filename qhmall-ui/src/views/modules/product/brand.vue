@@ -177,7 +177,7 @@ export default {
         this.cateRelationTableData = data.data;
       });
     },
-    // 获取数据列表
+    // 获取品牌列表
     getDataList() {
       this.dataListLoading = true;
       this.$http({

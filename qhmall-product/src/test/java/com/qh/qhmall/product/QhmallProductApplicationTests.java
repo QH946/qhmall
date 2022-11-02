@@ -4,14 +4,17 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.qh.qhmall.product.entity.BrandEntity;
 import com.qh.qhmall.product.service.BrandService;
 import com.qh.qhmall.product.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class QhmallProductApplicationTests {
@@ -53,12 +56,12 @@ public class QhmallProductApplicationTests {
                 brandService
                         .list(new QueryWrapper<BrandEntity>()
                                 .eq("brand_id", 9L));
-        list.forEach((item)->{
+        list.forEach((item) -> {
             System.out.println(item);
         });
     }
 
-//    @Test
+    //    @Test
 //    public void testUpload() throws FileNotFoundException {
 //        // Endpoint以杭州为例，其它Region请按实际情况填写。
 //        String endpoint = "oss-cn-beijing.aliyuncs.com";
@@ -79,6 +82,10 @@ public class QhmallProductApplicationTests {
 //
 //        System.out.println("上传成功...");
 //    }
-
+    @Test
+    public void testFindPath() {
+        Long[] catelogPath = categoryService.findCatelogPath(225L);
+        log.info("完整路径：{}", Arrays.asList(catelogPath));
+    }
 
 }
