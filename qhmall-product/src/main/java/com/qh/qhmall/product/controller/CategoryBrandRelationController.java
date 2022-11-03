@@ -41,7 +41,7 @@ public class CategoryBrandRelationController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		CategoryBrandRelationEntity categoryBrandRelation = categoryBrandRelationService.getById(id);
 
@@ -51,7 +51,7 @@ public class CategoryBrandRelationController {
     /**
      * 新增品牌分类关联
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
         categoryBrandRelationService.saveDetail(categoryBrandRelation);
         return R.ok();
@@ -60,7 +60,7 @@ public class CategoryBrandRelationController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public R update(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
 		categoryBrandRelationService.updateById(categoryBrandRelation);
 
@@ -70,7 +70,7 @@ public class CategoryBrandRelationController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		categoryBrandRelationService.removeByIds(Arrays.asList(ids));
 

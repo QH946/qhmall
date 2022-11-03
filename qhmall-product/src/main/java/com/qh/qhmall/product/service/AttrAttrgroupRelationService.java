@@ -3,7 +3,9 @@ package com.qh.qhmall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.product.entity.AttrAttrgroupRelationEntity;
+import com.qh.qhmall.product.vo.AttrGroupRelationVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,12 @@ import java.util.Map;
 public interface AttrAttrgroupRelationService extends IService<AttrAttrgroupRelationEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 新增分组与属性关联
+     *
+     * @param vos vos
+     */
+    void saveBatch(List<AttrGroupRelationVo> vos);
 }
 

@@ -41,7 +41,7 @@ public class BrandController {
     /**
      * 查看品牌信息
      */
-    @RequestMapping ("/info/{brandId}")
+    @GetMapping ("/info/{brandId}")
     public R info(@PathVariable("brandId") Long brandId) {
         BrandEntity brand = brandService.getById(brandId);
         return R.ok().put("brand", brand);
@@ -50,7 +50,7 @@ public class BrandController {
     /**
      * 新增品牌
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand) {
         brandService.save(brand);
         return R.ok();
@@ -59,7 +59,7 @@ public class BrandController {
     /**
      * 修改品牌信息
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public R update(@Validated(UpdateGroup.class) @RequestBody BrandEntity brand) {
         brandService.updateDetail(brand);
         return R.ok();
@@ -68,7 +68,7 @@ public class BrandController {
     /**
      * 修改品牌状态
      */
-    @RequestMapping("/update/status")
+    @PostMapping("/update/status")
     public R updateStatus(@Validated(UpdateStatusGroup.class) @RequestBody BrandEntity brand) {
         brandService.updateById(brand);
         return R.ok();
@@ -77,7 +77,7 @@ public class BrandController {
     /**
      * 删除品牌
      */
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] brandIds) {
         brandService.removeByIds(Arrays.asList(brandIds));
         return R.ok();

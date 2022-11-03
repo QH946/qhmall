@@ -1,20 +1,15 @@
 package com.qh.qhmall.product.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.qh.qhmall.product.entity.AttrEntity;
-import com.qh.qhmall.product.service.AttrService;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
+import com.qh.qhmall.product.service.AttrService;
+import com.qh.qhmall.product.vo.AttrRespVo;
+import com.qh.qhmall.product.vo.AttrVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
@@ -31,59 +26,65 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
+
+    /**
+     * 查询商品属性
+     *
+     * @param params    参数个数
+     * @param catelogId catelog id
+     * @return {@link R}
+     */
+    @GetMapping("/{attrType}/list/{catelogId}")
+    public R baseAttrList(@RequestParam Map<String, Object> params,
+                          @PathVariable("catelogId") Long catelogId,
+                          @PathVariable("attrType")String type){
+        PageUtils page = attrService.queryBaseAttrPage(params,catelogId,type);
+        return R.ok().put("page", page);
+    }
+
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("product:attr:list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
 
     /**
-     * 信息
+     * 查询属性详细
      */
-    @RequestMapping("/info/{attrId}")
-    //@RequiresPermissions("product:attr:info")
+    @GetMapping("/info/{attrId}")
     public R info(@PathVariable("attrId") Long attrId){
-		AttrEntity attr = attrService.getById(attrId);
-
-        return R.ok().put("attr", attr);
+        AttrRespVo respVo = attrService.getAttrInfo(attrId);
+        return R.ok().put("attr", respVo);
     }
 
     /**
-     * 保存
+     * 新增商品属性
      */
-    @RequestMapping("/save")
-    //@RequiresPermissions("product:attr:save")
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
-
+    @PostMapping("/save")
+    public R save(@RequestBody AttrVo attr){
+        attrService.saveAttr(attr);
         return R.ok();
     }
 
     /**
-     * 修改
+     * 修改商品属性
      */
-    @RequestMapping("/update")
-    //@RequiresPermissions("product:attr:update")
-    public R update(@RequestBody AttrEntity attr){
-		attrService.updateById(attr);
-
+    @PostMapping("/update")
+    public R update(@RequestBody AttrVo attr){
+        attrService.updateAttr(attr);
         return R.ok();
     }
 
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    //@RequiresPermissions("product:attr:delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] attrIds){
 		attrService.removeByIds(Arrays.asList(attrIds));
-
         return R.ok();
     }
 
