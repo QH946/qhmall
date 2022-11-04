@@ -1,12 +1,15 @@
-/**
-  * Copyright 2019 bejson.com 
-  */
 package com.qh.qhmall.product.vo;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * sku视图对象
+ *
+ * @author qh
+ * @date 2022/11/04 15:16:31
+ */
 @Data
 public class Skus {
 

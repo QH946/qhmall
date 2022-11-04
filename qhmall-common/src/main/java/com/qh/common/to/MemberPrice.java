@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 
 /**
- * 会员价格
+ * 会员价格传输对象
  *
  * @author qh
  * @date 2022/10/30 18:59:34

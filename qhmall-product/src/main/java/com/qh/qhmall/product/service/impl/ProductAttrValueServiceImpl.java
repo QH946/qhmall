@@ -1,16 +1,17 @@
 package com.qh.qhmall.product.service.impl;
 
-import org.springframework.stereotype.Service;
-import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.Query;
-
 import com.qh.qhmall.product.dao.ProductAttrValueDao;
 import com.qh.qhmall.product.entity.ProductAttrValueEntity;
 import com.qh.qhmall.product.service.ProductAttrValueService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 
 @Service("productAttrValueService")
@@ -24,6 +25,16 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         );
 
         return new PageUtils(page);
+    }
+
+    /**
+     * 保存SPU的规格参数
+     *
+     * @param collect 收集
+     */
+    @Override
+    public void saveProductAttr(List<ProductAttrValueEntity> collect) {
+        this.saveBatch(collect);
     }
 
 }

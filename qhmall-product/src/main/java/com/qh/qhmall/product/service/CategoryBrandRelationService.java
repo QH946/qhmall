@@ -2,8 +2,10 @@ package com.qh.qhmall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qh.common.utils.PageUtils;
+import com.qh.qhmall.product.entity.BrandEntity;
 import com.qh.qhmall.product.entity.CategoryBrandRelationEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,5 +41,13 @@ public interface CategoryBrandRelationService extends IService<CategoryBrandRela
      * @param name  名字
      */
     void updateCategory(Long catId, String name);
+
+    /**
+     * 获取分类关联的品牌
+     *
+     * @param catId 分类id
+     * @return {@link List}<{@link BrandEntity}>
+     */
+    List<BrandEntity> getBrandsByCatId(Long catId);
 }
 

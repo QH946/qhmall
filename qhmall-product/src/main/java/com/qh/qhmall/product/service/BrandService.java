@@ -16,7 +16,7 @@ import java.util.Map;
 public interface BrandService extends IService<BrandEntity> {
 
     /**
-     * 模糊及分页分页查询品牌
+     * 查询品牌
      *
      * @param params 参数个数
      * @return {@link PageUtils}

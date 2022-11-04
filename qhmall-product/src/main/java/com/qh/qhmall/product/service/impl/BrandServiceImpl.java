@@ -23,7 +23,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
     private CategoryBrandRelationService categoryBrandRelationService;
 
     /**
-     * 模糊及分页查询品牌
+     * 查询品牌
      *
      * @param params 参数个数
      * @return {@link PageUtils}

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 标准化产品单元界限
+ * SPU积分传输对象
  *
  * @author qh
  * @date 2022/10/30 18:43:00

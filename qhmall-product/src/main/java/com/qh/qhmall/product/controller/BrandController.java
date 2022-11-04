@@ -29,7 +29,7 @@ public class BrandController {
     private BrandService brandService;
 
     /**
-     * 模糊及分页查询品牌
+     * 查询品牌
      */
     @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params) {
@@ -39,7 +39,7 @@ public class BrandController {
 
 
     /**
-     * 查看品牌信息
+     * 获取品牌信息
      */
     @GetMapping ("/info/{brandId}")
     public R info(@PathVariable("brandId") Long brandId) {

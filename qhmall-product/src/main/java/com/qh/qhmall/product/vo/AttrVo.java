@@ -4,7 +4,7 @@ package com.qh.qhmall.product.vo;
 import lombok.Data;
 
 /**
- * 商品属性视图对象
+ * 商品属性的视图对象
  *
  * @author qh
  * @date 2022/11/03 13:35:23

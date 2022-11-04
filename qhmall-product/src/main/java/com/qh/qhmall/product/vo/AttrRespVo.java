@@ -3,7 +3,7 @@ package com.qh.qhmall.product.vo;
 import lombok.Data;
 
 /**
- * 查询时，商品属性响应视图对象
+ * 查询属性详细时，商品属性响应的视图对象
  *
  * @author qh
  * @date 2022/11/03 13:43:49

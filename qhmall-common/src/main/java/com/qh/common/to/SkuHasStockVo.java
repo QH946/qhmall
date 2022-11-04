@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 /**
- * 标准化产品单元库存
+ * SKU库存传输对象
  *
  * @author qh
  * @date 2022/10/30 18:43:50

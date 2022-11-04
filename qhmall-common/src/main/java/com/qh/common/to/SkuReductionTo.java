@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 库存量单位减少
+ * SKU优惠、满减等信息的传输对象
  *
  * @author qh
  * @date 2022/10/30 18:43:24

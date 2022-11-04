@@ -12,11 +12,14 @@ import com.qh.qhmall.product.dao.CategoryDao;
 import com.qh.qhmall.product.entity.BrandEntity;
 import com.qh.qhmall.product.entity.CategoryBrandRelationEntity;
 import com.qh.qhmall.product.entity.CategoryEntity;
+import com.qh.qhmall.product.service.BrandService;
 import com.qh.qhmall.product.service.CategoryBrandRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("categoryBrandRelationService")
@@ -26,6 +29,10 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
     private BrandDao brandDao;
     @Autowired
     private CategoryDao categoryDao;
+    @Autowired
+    private CategoryBrandRelationDao relationDao;
+    @Autowired
+    private BrandService brandService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -80,7 +87,25 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
      */
     @Override
     public void updateCategory(Long catId, String name) {
-        this.baseMapper.updateCategory(catId,name);
+        this.baseMapper.updateCategory(catId, name);
     }
+
+    /**
+     * 获取分类关联的品牌
+     *
+     * @param catId 分类id
+     * @return {@link List}<{@link BrandEntity}>
+     */
+    @Override
+    public List<BrandEntity> getBrandsByCatId(Long catId) {
+        List<CategoryBrandRelationEntity> catelogId =
+                relationDao.selectList(new QueryWrapper<CategoryBrandRelationEntity>()
+                        .eq("catelog_id", catId));
+        return catelogId.stream().map((item) -> {
+            Long brandId = item.getBrandId();
+            return brandService.getById(brandId);
+        }).collect(Collectors.toList());
+    }
+
 
 }
