@@ -2,15 +2,14 @@ package com.qh.qhmall.ware.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
-import java.math.BigDecimal;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
- * 
- * 
+ * 购买细节实体
+ *
  * @author 清欢
  * @email qh@gmail.com
  * @date 2022-10-26 14:33:15

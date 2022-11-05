@@ -1,6 +1,8 @@
 package com.qh.qhmall.order.config;
 
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -8,15 +10,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class MyBatisConfig {
-    //引入分页插件
     @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor(DbType.MYSQL);
         // 设置请求的页面大于最大页后操作， true调回到首页，false 继续请求  默认false
-        paginationInterceptor.setOverflow(true);
+        paginationInnerInterceptor.setOverflow(false);
         // 设置最大单页限制数量，默认 500 条，-1 不受限制
-        paginationInterceptor.setLimit(1000);
-        return paginationInterceptor;
+        paginationInnerInterceptor.setMaxLimit(500L);
+        interceptor.addInnerInterceptor(paginationInnerInterceptor);
+        return interceptor;
     }
 
 }

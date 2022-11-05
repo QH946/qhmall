@@ -1,20 +1,14 @@
 package com.qh.qhmall.ware.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.qh.qhmall.ware.entity.WareInfoEntity;
-import com.qh.qhmall.ware.service.WareInfoService;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
+import com.qh.qhmall.ware.entity.WareInfoEntity;
+import com.qh.qhmall.ware.service.WareInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
@@ -32,13 +26,11 @@ public class WareInfoController {
     private WareInfoService wareInfoService;
 
     /**
-     * 列表
+     * 查询仓库
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("ware:wareinfo:list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = wareInfoService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
@@ -46,44 +38,36 @@ public class WareInfoController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    //@RequiresPermissions("ware:wareinfo:info")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		WareInfoEntity wareInfo = wareInfoService.getById(id);
-
         return R.ok().put("wareInfo", wareInfo);
     }
 
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    //@RequiresPermissions("ware:wareinfo:save")
+    @PostMapping("/save")
     public R save(@RequestBody WareInfoEntity wareInfo){
 		wareInfoService.save(wareInfo);
-
         return R.ok();
     }
 
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    //@RequiresPermissions("ware:wareinfo:update")
+    @PostMapping("/update")
     public R update(@RequestBody WareInfoEntity wareInfo){
 		wareInfoService.updateById(wareInfo);
-
         return R.ok();
     }
 
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    //@RequiresPermissions("ware:wareinfo:delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		wareInfoService.removeByIds(Arrays.asList(ids));
-
         return R.ok();
     }
 

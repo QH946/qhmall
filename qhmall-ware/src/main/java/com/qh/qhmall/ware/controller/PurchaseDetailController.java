@@ -25,14 +25,16 @@ public class PurchaseDetailController {
     @Autowired
     private PurchaseDetailService purchaseDetailService;
 
+
     /**
-     * 列表
+     * 查询采购需求
+     *
+     * @param params 参数个数
+     * @return {@link R}
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("ware:purchasedetail:list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = purchaseDetailService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
@@ -40,44 +42,36 @@ public class PurchaseDetailController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    //@RequiresPermissions("ware:purchasedetail:info")
+    @GetMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		PurchaseDetailEntity purchaseDetail = purchaseDetailService.getById(id);
-
         return R.ok().put("purchaseDetail", purchaseDetail);
     }
 
     /**
      * 保存
      */
-    @RequestMapping("/save")
-    //@RequiresPermissions("ware:purchasedetail:save")
+    @PostMapping("/save")
     public R save(@RequestBody PurchaseDetailEntity purchaseDetail){
 		purchaseDetailService.save(purchaseDetail);
-
         return R.ok();
     }
 
     /**
      * 修改
      */
-    @RequestMapping("/update")
-    //@RequiresPermissions("ware:purchasedetail:update")
+    @PostMapping("/update")
     public R update(@RequestBody PurchaseDetailEntity purchaseDetail){
 		purchaseDetailService.updateById(purchaseDetail);
-
         return R.ok();
     }
 
     /**
      * 删除
      */
-    @RequestMapping("/delete")
-    //@RequiresPermissions("ware:purchasedetail:delete")
+    @PostMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		purchaseDetailService.removeByIds(Arrays.asList(ids));
-
         return R.ok();
     }
 

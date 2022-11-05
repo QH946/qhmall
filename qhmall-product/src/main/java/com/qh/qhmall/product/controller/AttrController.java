@@ -2,13 +2,16 @@ package com.qh.qhmall.product.controller;
 
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
+import com.qh.qhmall.product.entity.ProductAttrValueEntity;
 import com.qh.qhmall.product.service.AttrService;
+import com.qh.qhmall.product.service.ProductAttrValueService;
 import com.qh.qhmall.product.vo.AttrRespVo;
 import com.qh.qhmall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -25,6 +28,21 @@ import java.util.Map;
 public class AttrController {
     @Autowired
     private AttrService attrService;
+    @Autowired
+    private ProductAttrValueService productAttrValueService;
+
+
+    /**
+     * 获取SPU规格
+     *
+     * @param spuId spu id
+     * @return {@link R}
+     */
+    @GetMapping("/base/listforspu/{spuId}")
+    public R baseAttrListForSpu(@PathVariable("spuId") Long spuId){
+        List<ProductAttrValueEntity> entities = productAttrValueService.baseAttrListForSpu(spuId);
+        return R.ok().put("data",entities);
+    }
 
 
     /**
@@ -40,6 +58,20 @@ public class AttrController {
                           @PathVariable("attrType")String type){
         PageUtils page = attrService.queryBaseAttrPage(params,catelogId,type);
         return R.ok().put("page", page);
+    }
+
+    /**
+     * 修改商品规格
+     *
+     * @param spuId    spu id
+     * @param entities 实体
+     * @return {@link R}
+     */
+    @PostMapping("/update/{spuId}")
+    public R updateSpuAttr(@PathVariable("spuId") Long spuId,
+                           @RequestBody List<ProductAttrValueEntity> entities){
+        productAttrValueService.updateSpuAttr(spuId,entities);
+        return R.ok();
     }
 
     /**
