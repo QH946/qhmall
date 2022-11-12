@@ -19,6 +19,7 @@
         <module>qhmall-gateway</module>
         <module>qhmall-backend</module>
         <module>qhmall-third-party</module>
+        <module>qhmall-search</module>
     </modules>
 
     <!--  这里的属性会被子模块继承  -->
@@ -32,10 +33,10 @@
         <mysql.version>8.0.28</mysql.version>
         <http.components.version>4.4.13</http.components.version>
         <commons.lang.version>2.6</commons.lang.version>
-        <elasticsearch.version>7.4.2</elasticsearch.version>
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
         <cloud.alibaba.version>2.2.1.RELEASE</cloud.alibaba.version>
+        <elasticsearch.version>7.4.2</elasticsearch.version>
     </properties>
     <!--  子模块继承父模块之后，提供作用：锁定版本 + 子模块不用再写 version  -->
     <dependencyManagement>
@@ -90,27 +91,26 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
-            <!--            <dependency>-->
-            <!--                <groupId>org.elasticsearch.client</groupId>-->
-            <!--                <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
-            <!--                <version>${elasticsearch.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.elasticsearch</groupId>-->
-            <!--                <artifactId>elasticsearch</artifactId>-->
-            <!--                <version>${elasticsearch.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.elasticsearch.client</groupId>-->
-            <!--                <artifactId>elasticsearch-rest-client</artifactId>-->
-            <!--                <version>${elasticsearch.version}</version>-->
-            <!--            </dependency>-->
-
             <dependency>
                 <groupId>com.qh</groupId>
                 <artifactId>qhmall-common</artifactId>
                 <version>${qhmall.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${elasticsearch.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

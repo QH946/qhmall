@@ -8,10 +8,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.174.130:8848
       config:
-        server-addr: localhost:8848
-#        namespace: 790ba620-a506-40ff-ac16-b91285acb58b
-#        group: dev
-
+        server-addr: 192.168.174.130:8848
+        file-extension: yml
 

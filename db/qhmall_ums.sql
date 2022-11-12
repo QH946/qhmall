@@ -183,7 +183,7 @@ CREATE TABLE `ums_member_level` (
   `priviledge_birthday` tinyint DEFAULT NULL COMMENT '是否有生日特权',
   `note` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员等级';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员等级';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +192,7 @@ CREATE TABLE `ums_member_level` (
 
 LOCK TABLES `ums_member_level` WRITE;
 /*!40000 ALTER TABLE `ums_member_level` DISABLE KEYS */;
+INSERT INTO `ums_member_level` VALUES (1,'普通会员',100,1,299.0000,10,0,0,1,'普通会员'),(2,'黄金会员',300,0,279.0000,15,0,1,1,'黄金会员'),(3,'白金会员',1000,0,219.0000,20,0,1,1,'白金会员'),(4,'钻石会员',2888,0,0.0000,30,1,1,1,'钻石会员');
 /*!40000 ALTER TABLE `ums_member_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,4 +331,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-26 10:12:51
+-- Dump completed on 2022-11-12 19:42:44

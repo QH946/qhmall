@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: qhmall-backend
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.174.130:8848
+      config:
+        server-addr: 192.168.174.130:8848
+        file-extension: yml

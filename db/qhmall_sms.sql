@@ -431,7 +431,7 @@ CREATE TABLE `sms_spu_bounds` (
   `buy_bounds` decimal(18,4) DEFAULT NULL COMMENT '购物积分',
   `work` tinyint(1) DEFAULT NULL COMMENT '优惠生效情况[1111（四个状态位，从右到左）;0 - 无优惠，成长积分是否赠送;1 - 无优惠，购物积分是否赠送;2 - 有优惠，成长积分是否赠送;3 - 有优惠，购物积分是否赠送【状态位0：不赠送，1：赠送】]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品spu积分设置';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品spu积分设置';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -440,6 +440,7 @@ CREATE TABLE `sms_spu_bounds` (
 
 LOCK TABLES `sms_spu_bounds` WRITE;
 /*!40000 ALTER TABLE `sms_spu_bounds` DISABLE KEYS */;
+INSERT INTO `sms_spu_bounds` VALUES (1,15,500.0000,500.0000,NULL),(2,16,50.0000,500.0000,NULL),(3,17,50.0000,500.0000,NULL),(4,18,20.0000,300.0000,NULL);
 /*!40000 ALTER TABLE `sms_spu_bounds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,4 +484,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-26 10:12:40
+-- Dump completed on 2022-11-12 19:42:52
