@@ -25,11 +25,24 @@ public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
 
+
+    /**
+     * 商品上架
+     *
+     * @param spuId spu id
+     * @return {@link R}
+     */
+    @PostMapping("/{spuId}/up")
+    public R upSpu(@PathVariable Long spuId) {
+        spuInfoService.up(spuId);
+        return R.ok();
+    }
+
     /**
      * 查询SPU
      */
     @GetMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = spuInfoService.queryPageByCondition(params);
         return R.ok().put("page", page);
     }

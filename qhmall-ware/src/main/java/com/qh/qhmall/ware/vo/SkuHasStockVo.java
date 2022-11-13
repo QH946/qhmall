@@ -1,13 +1,13 @@
-package com.qh.common.to;
+package com.qh.qhmall.ware.vo;
+
 
 import lombok.Data;
 
-
 /**
- * SKU是否有库存传输对象
+ * SKU有库存
  *
  * @author 清欢
- * @date 2022/11/13 15:09:49
+ * @date 2022/11/13 14:51:03
  */
 @Data
 public class SkuHasStockVo {

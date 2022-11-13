@@ -1,7 +1,7 @@
 package com.qh.qhmall.product.dao;
 
-import com.qh.qhmall.product.entity.ProductAttrValueEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.qh.qhmall.product.entity.ProductAttrValueEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,5 +13,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ProductAttrValueDao extends BaseMapper<ProductAttrValueEntity> {
-	
+
 }

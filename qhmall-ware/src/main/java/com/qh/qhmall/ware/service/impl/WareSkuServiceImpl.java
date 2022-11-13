@@ -3,6 +3,7 @@ package com.qh.qhmall.ware.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qh.common.to.SkuHasStockVo;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.Query;
 import com.qh.common.utils.R;
@@ -16,6 +17,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service("wareSkuService")
@@ -92,5 +94,22 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             //有该记录就进行更新
             wareSkuDao.addStock(skuId, wareId, skuNum);
         }
+    }
+
+    /**
+     * 查询SKU是否有库存
+     *
+     * @param skuIds sku id
+     * @return {@link List}<{@link SkuHasStockVo}>
+     */
+    @Override
+    public List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds) {
+        return skuIds.stream().map(item -> {
+            Long count = baseMapper.getSkuStock(item);
+            SkuHasStockVo skuHasStockVo = new SkuHasStockVo();
+            skuHasStockVo.setSkuId(item);
+            skuHasStockVo.setHasStock(count != null && count > 0);
+            return skuHasStockVo;
+        }).collect(Collectors.toList());
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * 传输对象，存储到es的数据
+ * SKU在ES中存储的数据
  *
  * @author qh
  * @date 2022/10/30 18:34:33

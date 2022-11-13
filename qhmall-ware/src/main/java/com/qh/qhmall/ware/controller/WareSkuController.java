@@ -1,5 +1,6 @@
 package com.qh.qhmall.ware.controller;
 
+import com.qh.common.to.SkuHasStockVo;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
 import com.qh.qhmall.ware.entity.WareSkuEntity;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -24,6 +26,19 @@ import java.util.Map;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+
+    /**
+     * 查询sku是否有库存
+     *
+     * @param skuIds sku id
+     * @return {@link R}
+     */
+    @PostMapping(value = "/hasStock")
+    public R getSkuHasStock(@RequestBody List<Long> skuIds) {
+        List<SkuHasStockVo> vos = wareSkuService.getSkuHasStock(skuIds);
+        return R.ok().setData(vos);
+    }
 
     /**
      * 查询库存

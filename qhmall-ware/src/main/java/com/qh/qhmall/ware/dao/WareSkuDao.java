@@ -23,4 +23,12 @@ public interface WareSkuDao extends BaseMapper<WareSkuEntity> {
      * @param skuNum sku num
      */
     void addStock(@Param("skuId") Long skuId, @Param("wareId") Long wareId, @Param("skuNum") Integer skuNum);
+
+    /**
+     * 获取SKU库存
+     *
+     * @param skuId sku id
+     * @return {@link Long}
+     */
+    Long getSkuStock(@Param("skuId") Long skuId);
 }

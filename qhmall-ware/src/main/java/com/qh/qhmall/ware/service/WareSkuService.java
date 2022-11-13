@@ -1,9 +1,11 @@
 package com.qh.qhmall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qh.common.to.SkuHasStockVo;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.ware.entity.WareSkuEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,5 +33,13 @@ public interface WareSkuService extends IService<WareSkuEntity> {
      * @param skuNum sku num
      */
     void addStock(Long skuId, Long wareId, Integer skuNum);
+
+    /**
+     * 查询sku是否有库存
+     *
+     * @param skuIds sku id
+     * @return {@link List}<{@link SkuHasStockVo}>
+     */
+    List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds);
 }
 
