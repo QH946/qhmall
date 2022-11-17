@@ -3,6 +3,7 @@ package com.qh.qhmall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.product.entity.SkuInfoEntity;
+import com.qh.qhmall.product.vo.SkuItemVo;
 
 import java.util.List;
 import java.util.Map;
@@ -40,5 +41,13 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
      * @return {@link List}<{@link SkuInfoEntity}>
      */
     List<SkuInfoEntity> getSkuById(Long spuId);
+
+    /**
+     * 展示当前sku的详情
+     *
+     * @param skuId sku id
+     * @return {@link SkuItemVo}
+     */
+    SkuItemVo item(Long skuId);
 }
 

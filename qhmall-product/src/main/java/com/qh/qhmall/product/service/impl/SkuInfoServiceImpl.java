@@ -8,6 +8,7 @@ import com.qh.common.utils.Query;
 import com.qh.qhmall.product.dao.SkuInfoDao;
 import com.qh.qhmall.product.entity.SkuInfoEntity;
 import com.qh.qhmall.product.service.SkuInfoService;
+import com.qh.qhmall.product.vo.SkuItemVo;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -97,6 +98,17 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     @Override
     public List<SkuInfoEntity> getSkuById(Long spuId) {
         return this.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id", spuId));
+    }
+
+    /**
+     * 展示当前sku的详情
+     *
+     * @param skuId sku id
+     * @return {@link SkuItemVo}
+     */
+    @Override
+    public SkuItemVo item(Long skuId) {
+        return null;
     }
 
 }

@@ -1,0 +1,8 @@
+192.168.174.130 qhmall.com
+192.168.174.130 search.qhmall.com
+192.168.174.130 item.qhmall.com
+192.168.174.130 auth.qhmall.com
+192.168.174.130 cart.qhmall.com
+192.168.174.130 order.qhmall.com
+192.168.174.130 member.qhmall.com
+192.168.174.130 seckill.qhmall.com

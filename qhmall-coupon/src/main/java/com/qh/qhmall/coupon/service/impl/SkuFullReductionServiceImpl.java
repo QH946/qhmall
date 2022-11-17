@@ -50,7 +50,7 @@ public class SkuFullReductionServiceImpl extends ServiceImpl<SkuFullReductionDao
      */
     @Override
     public void saveSkuReduction(SkuReductionTo reductionTo) {
-        //1、sku的优惠、满减等信息；gulimall_sms->
+        //1、sku的优惠、满减等信息；qhmall_sms->
         // sms_sku_ladder\sms_sku_full_reduction\sms_member_price
         //sms_sku_ladder
         SkuLadderEntity skuLadderEntity = new SkuLadderEntity();

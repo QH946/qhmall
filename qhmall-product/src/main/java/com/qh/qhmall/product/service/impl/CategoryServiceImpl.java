@@ -9,6 +9,7 @@ import com.qh.qhmall.product.dao.CategoryDao;
 import com.qh.qhmall.product.entity.CategoryEntity;
 import com.qh.qhmall.product.service.CategoryBrandRelationService;
 import com.qh.qhmall.product.service.CategoryService;
+import com.qh.qhmall.product.vo.Catalogs2Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -94,7 +95,78 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         //更新分类表中的分类名称
         this.updateById(category);
         //更新关联表中的分类
-        categoryBrandRelationService.updateCategory(category.getCatId(),category.getName());
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
+    }
+
+    /**
+     * 查询所有的一级分类
+     *
+     * @return {@link List}<{@link CategoryEntity}>
+     */
+    @Override
+    public List<CategoryEntity> getLevel1Categories() {
+        System.out.println("get Level 1 Categories........");
+        long l = System.currentTimeMillis();
+        List<CategoryEntity> categoryEntities = baseMapper.selectList(
+                new QueryWrapper<CategoryEntity>().eq("parent_cid", 0));
+        System.out.println("消耗时间：" + (System.currentTimeMillis() - l));
+        return categoryEntities;
+    }
+
+    /**
+     * 获取二级、三级分类数据
+     *
+     * @return {@link Map}<{@link String}, {@link List}<{@link Catalogs2Vo}>>
+     */
+    @Override
+    public Map<String, List<Catalogs2Vo>> getCatalogJson() {
+        //性能优化：将数据库的多次查询变为一次，查询所有分类
+        List<CategoryEntity> selectList = this.baseMapper.selectList(null);
+        //查询一级分类
+        List<CategoryEntity> level1Categories = getParentCid(selectList, 0L);
+        //封装数据
+        return level1Categories.stream().collect(Collectors.toMap(k -> k.getCatId().toString(), v -> {
+            //查询每个一级分类的二级分类并封装成vo
+            List<CategoryEntity> categoryEntities = getParentCid(selectList, v.getCatId());
+            List<Catalogs2Vo> catalogs2Vos = null;
+            if (categoryEntities != null) {
+                catalogs2Vos = categoryEntities
+                        .stream()
+                        .map(l2 -> {
+                            Catalogs2Vo catalogs2Vo = new Catalogs2Vo(v.getCatId().toString(), null,
+                                    l2.getCatId().toString(), l2.getName());
+                            //查询当前二级分类的三级分类并封装成vo
+                            List<CategoryEntity> level3Catelog = getParentCid(selectList, l2.getCatId());
+                            if (level3Catelog != null) {
+                                List<Catalogs2Vo.Category3Vo> category3Vos = level3Catelog
+                                        .stream()
+                                        .map(l3 -> {
+                                            Catalogs2Vo.Category3Vo category3Vo = new Catalogs2Vo.Category3Vo(l2.getCatId().toString(),
+                                                    l3.getCatId().toString(), l3.getName());
+                                            return category3Vo;
+                                        }).collect(Collectors.toList());
+                                catalogs2Vo.setCatalog3List(category3Vos);
+                            }
+                            return catalogs2Vo;
+                        }).collect(Collectors.toList());
+            }
+            return catalogs2Vos;
+        }));
+    }
+
+    /**
+     * 查询当前等级分类下的子级分类
+     *
+     * @param selectList 选择列表
+     * @param parentCid  父母cid
+     * @return {@link List}<{@link CategoryEntity}>
+     */
+    private List<CategoryEntity> getParentCid(List<CategoryEntity> selectList, Long parentCid) {
+        return selectList
+                .stream()
+                .filter(item -> item.getParentCid()
+                        .equals(parentCid))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -104,12 +176,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      * @param paths     路径
      * @return {@link List}<{@link Long}>
      */
-    private List<Long> findParentPath(Long catelogId,List<Long> paths){
+    private List<Long> findParentPath(Long catelogId, List<Long> paths) {
         //收集当前节点id
         paths.add(catelogId);
         CategoryEntity byId = this.getById(catelogId);
-        if(byId.getParentCid()!=0){
-            findParentPath(byId.getParentCid(),paths);
+        if (byId.getParentCid() != 0) {
+            findParentPath(byId.getParentCid(), paths);
         }
         return paths;
     }

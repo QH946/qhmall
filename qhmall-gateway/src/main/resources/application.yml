@@ -51,40 +51,40 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/qhmall-backend/$\{segment}
 
-#        - id: qhmall_host_route # 要放在后面
-#          uri: lb://qhmall-product
-#          predicates:
-#            - Host=qhmall.com, item.qhmall.com
-#
-#        - id: qhmall_search_route
-#          uri: lb://qhmall-search
-#          predicates:
-#            - Host=search.qhmall.com
-#
-#        - id: qhmall_auth_route
-#          uri: lb://qhmall-auth-server
-#          predicates:
-#            - Host=auth.qhmall.com
-#
-#        - id: qhmall_cart_route
-#          uri: lb://qhmall-cart
-#          predicates:
-#            - Host=cart.qhmall.com
-#
-#        - id: qhmall_order_route
-#          uri: lb://qhmall-order
-#          predicates:
-#            - Host=order.qhmall.com
-#
-#        - id: qhmall_member_route
-#          uri: lb://qhmall-member
-#          predicates:
-#            - Host=member.qhmall.com
-#
-#        - id: qhmall_seckill_route
-#          uri: lb://qhmall-seckill
-#          predicates:
-#            - Host=seckill.qhmall.com
+        - id: qhmall_host_route # 要放在后面
+          uri: lb://qhmall-product
+          predicates:
+            - Host=qhmall.com, item.qhmall.com
+
+        - id: qhmall_search_route
+          uri: lb://qhmall-search
+          predicates:
+            - Host=search.qhmall.com
+
+        - id: qhmall_auth_route
+          uri: lb://qhmall-auth-server
+          predicates:
+            - Host=auth.qhmall.com
+
+        - id: qhmall_cart_route
+          uri: lb://qhmall-cart
+          predicates:
+            - Host=cart.qhmall.com
+
+        - id: qhmall_order_route
+          uri: lb://qhmall-order
+          predicates:
+            - Host=order.qhmall.com
+
+        - id: qhmall_member_route
+          uri: lb://qhmall-member
+          predicates:
+            - Host=member.qhmall.com
+
+        - id: qhmall_seckill_route
+          uri: lb://qhmall-seckill
+          predicates:
+            - Host=seckill.qhmall.com
 
       ## http://localhost:88/api/captcha.jpg   http://localhost:8888/qhmall-backend/captcha.jpg
       ## http://localhost:88/api/product/category/list/tree http://localhost:10000/product/category/list/tree
