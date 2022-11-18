@@ -90,7 +90,6 @@ CREATE TABLE `QRTZ_CRON_TRIGGERS` (
 
 LOCK TABLES `QRTZ_CRON_TRIGGERS` WRITE;
 /*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` DISABLE KEYS */;
-INSERT INTO `QRTZ_CRON_TRIGGERS` VALUES ('RenrenScheduler','TASK_1','DEFAULT','0 0/30 * * * ?','Asia/Shanghai');
 /*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +163,6 @@ CREATE TABLE `QRTZ_JOB_DETAILS` (
 
 LOCK TABLES `QRTZ_JOB_DETAILS` WRITE;
 /*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` DISABLE KEYS */;
-INSERT INTO `QRTZ_JOB_DETAILS` VALUES ('RenrenScheduler','TASK_1','DEFAULT',NULL,'io.renren.modules.job.utils.ScheduleJob','0','0','0','0',_binary 'ÔøΩÔøΩ\0sr\0org.quartz.JobDataMapÔøΩÔøΩÔøΩËø©ÔøΩÔøΩ\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMapÔøΩÔøΩÔøΩÔøΩÔøΩ](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMapÔøΩ.ÔøΩ(v\nÔøΩ\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMapÔøΩÔøΩÔøΩ`ÔøΩ\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0.io.renren.modules.job.entity.ScheduleJobEntity\0\0\0\0\0\0\0\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statust\0Ljava/lang/Integer;xpt\0testTasksr\0java.util.DatehjÔøΩKYt\0\0xpw\0\0ÔøΩiÔøΩ=ÔøΩxt\00 0/30 * * * ?sr\0java.lang.Long;ÔøΩÔøΩÃè#ÔøΩ\0J\0valuexr\0java.lang.NumberÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ\0\0xp\0\0\0\0\0\0\0t\0renrent\0ÂèÇÊï∞ÊµãËØïsr\0java.lang.Integer‚†§ÔøΩÔøΩÔøΩ8\0I\0valuexq\0~\0\0\0\0\0x\0');
 /*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +186,6 @@ CREATE TABLE `QRTZ_LOCKS` (
 
 LOCK TABLES `QRTZ_LOCKS` WRITE;
 /*!40000 ALTER TABLE `QRTZ_LOCKS` DISABLE KEYS */;
-INSERT INTO `QRTZ_LOCKS` VALUES ('RenrenScheduler','STATE_ACCESS'),('RenrenScheduler','TRIGGER_ACCESS');
 /*!40000 ALTER TABLE `QRTZ_LOCKS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +234,6 @@ CREATE TABLE `QRTZ_SCHEDULER_STATE` (
 
 LOCK TABLES `QRTZ_SCHEDULER_STATE` WRITE;
 /*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` DISABLE KEYS */;
-INSERT INTO `QRTZ_SCHEDULER_STATE` VALUES ('RenrenScheduler','wsq1668257290944',1668257821373,15000);
 /*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +348,6 @@ CREATE TABLE `QRTZ_TRIGGERS` (
 
 LOCK TABLES `QRTZ_TRIGGERS` WRITE;
 /*!40000 ALTER TABLE `QRTZ_TRIGGERS` DISABLE KEYS */;
-INSERT INTO `QRTZ_TRIGGERS` VALUES ('RenrenScheduler','TASK_1','DEFAULT','TASK_1','DEFAULT',NULL,1668250800000,-1,5,'WAITING','CRON',1668249099000,0,NULL,2,_binary '¨\Ì\0sr\0org.quartz.JobDataMapü∞ÉËø©∞\À\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMapÇ\Ë\√˚\≈](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\Ê.≠(v\n\Œ\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\⁄¡\√`\—\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0.io.renren.modules.job.entity.ScheduleJobEntity\0\0\0\0\0\0\0\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statust\0Ljava/lang/Integer;xpt\0testTasksr\0java.util.DatehjÅKYt\0\0xpw\0\0Ñi≠=Äxt\00 0/30 * * * ?sr\0java.lang.Long;ã\‰êÃè#\ﬂ\0J\0valuexr\0java.lang.NumberÜ¨ïî\‡ã\0\0xp\0\0\0\0\0\0\0t\0renrent\0ÂèÇÊï∞ÊµãËØïsr\0java.lang.Integer‚†§\˜Åá8\0I\0valuexq\0~\0\0\0\0\0x\0');
 /*!40000 ALTER TABLE `QRTZ_TRIGGERS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -681,7 +676,7 @@ CREATE TABLE `sys_user_token` (
 
 LOCK TABLES `sys_user_token` WRITE;
 /*!40000 ALTER TABLE `sys_user_token` DISABLE KEYS */;
-INSERT INTO `sys_user_token` VALUES (1,'8130349af45ad6b1eceb00b8e451372c','2022-11-13 08:49:00','2022-11-12 20:49:00');
+INSERT INTO `sys_user_token` VALUES (1,'94521f802b09fea81b1bf2dbc9514f31','2022-11-19 02:30:27','2022-11-18 14:30:27');
 /*!40000 ALTER TABLE `sys_user_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -753,4 +748,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-12 20:58:13
+-- Dump completed on 2022-11-18 14:48:09

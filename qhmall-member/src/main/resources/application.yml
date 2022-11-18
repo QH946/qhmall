@@ -11,3 +11,6 @@ mybatis-plus:
     db-config:
       id-type: auto
 
+logging:
+  level:
+    com.qh.qhmall.member.dao: debug

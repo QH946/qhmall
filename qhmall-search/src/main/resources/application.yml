@@ -9,4 +9,4 @@ spring:
 
 logging:
   level:
-    com.qh: debug
+    com.qh.qhmall.search.service: debug

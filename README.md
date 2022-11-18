@@ -162,14 +162,15 @@ qhmall
 - 修改本机的host文件，映射域名端口至Nginx地址
 
 ```
-192.168.56.102	qhmall.com
-192.168.56.102	search.qhmall.com
-192.168.56.102  item.qhmall.com
-192.168.56.102  auth.qhmall.com
-192.168.56.102  cart.qhmall.com
-192.168.56.102  order.qhmall.com
-192.168.56.102  member.qhmall.com
-192.168.56.102  seckill.qhmall.com
+192.168.174.130 qhmall.com
+192.168.174.130 search.qhmall.com
+192.168.174.130 item.qhmall.com
+192.168.174.130 auth.qhmall.com
+192.168.174.130 cart.qhmall.com
+192.168.174.130 order.qhmall.com
+192.168.174.130 member.qhmall.com
+192.168.174.130 seckill.qhmall.com
+
 以上ip换成自己Linux的ip地址
 ```
 
@@ -177,10 +178,13 @@ qhmall
 
 ```
 1、在nginx.conf中添加负载均衡的配置   
+cmd中ipconfig查询本机网关地址/查询部署网关的服务器所在的地址
+
 upstream qhmall{
 	# 网关的地址
-	server 192.168.56.1:88;
-}    
+	server  192.168.43.90:88;
+} 
+   
 2、在qhmall.conf中添加如下配置
 server {
 	# 监听以下域名地址的80端口
