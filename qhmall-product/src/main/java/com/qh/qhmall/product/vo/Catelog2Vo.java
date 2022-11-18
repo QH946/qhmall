@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * 二级分类id,首页分类数据
+ * 首页分类数据
  *
  * @author 清欢
  * @date 2022/11/16 13:53:02
@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Catalogs2Vo {
+public class Catelog2Vo {
 
     /**
      * 一级父分类的id

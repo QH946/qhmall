@@ -3,7 +3,7 @@ package com.qh.qhmall.product.web;
 
 import com.qh.qhmall.product.entity.CategoryEntity;
 import com.qh.qhmall.product.service.CategoryService;
-import com.qh.qhmall.product.vo.Catalogs2Vo;
+import com.qh.qhmall.product.vo.Catelog2Vo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,11 +41,11 @@ public class IndexController {
     /**
      * 获取二级、三级分类数据
      *
-     * @return {@link Map}<{@link String}, {@link List}<{@link Catalogs2Vo}>>
+     * @return {@link Map}<{@link String}, {@link List}<{@link Catelog2Vo}>>
      */
     @GetMapping(value = "/index/catalog.json")
     @ResponseBody
-    public Map<String, List<Catalogs2Vo>> getCatalogJson() {
+    public Map<String, List<Catelog2Vo>> getCatalogJson() {
         return categoryService.getCatalogJson();
     }
 

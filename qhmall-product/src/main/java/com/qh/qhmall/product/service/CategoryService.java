@@ -3,7 +3,7 @@ package com.qh.qhmall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.product.entity.CategoryEntity;
-import com.qh.qhmall.product.vo.Catalogs2Vo;
+import com.qh.qhmall.product.vo.Catelog2Vo;
 
 import java.util.List;
 import java.util.Map;
@@ -59,8 +59,8 @@ public interface CategoryService extends IService<CategoryEntity> {
     /**
      * 获取二级、三级分类数据
      *
-     * @return {@link Map}<{@link String}, {@link List}<{@link Catalogs2Vo}>>
+     * @return {@link Map}<{@link String}, {@link List}<{@link Catelog2Vo}>>
      */
-    Map<String, List<Catalogs2Vo>> getCatalogJson();
+    Map<String, List<Catelog2Vo>> getCatalogJson();
 }
 
