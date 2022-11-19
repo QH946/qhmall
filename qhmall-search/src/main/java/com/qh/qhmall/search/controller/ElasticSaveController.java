@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * @author: zhangshuaiyin
- * @date: 2021/3/11 15:22
- */
+
 @Slf4j
 @RequestMapping(value = "/search/save")
 @RestController

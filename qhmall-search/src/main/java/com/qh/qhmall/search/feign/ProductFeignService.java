@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient("qhmall-product")
 public interface ProductFeignService {
 
+    /**
+     * 查询属性详细
+     *
+     * @param attrId attr id
+     * @return {@link R}
+     */
     @GetMapping("/product/attr/info/{attrId}")
     R attrInfo(@PathVariable("attrId") Long attrId);
 

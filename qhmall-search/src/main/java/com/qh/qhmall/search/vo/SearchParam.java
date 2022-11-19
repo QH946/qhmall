@@ -9,7 +9,7 @@ import java.util.List;
  * 搜索参数
  *
  * @author 清欢
- * @date 2022/11/13 15:37:56
+ * @date 2022/11/19 15:13:38
  */
 @Data
 public class SearchParam {

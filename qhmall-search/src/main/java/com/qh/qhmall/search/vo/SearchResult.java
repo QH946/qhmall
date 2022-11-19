@@ -11,7 +11,7 @@ import java.util.List;
  * 搜索结果
  *
  * @author 清欢
- * @date 2022/11/13 15:37:49
+ * @date 2022/11/19 15:13:50
  */
 @Data
 public class SearchResult {
@@ -36,6 +36,9 @@ public class SearchResult {
      */
     private Integer totalPages;
 
+    /**
+     * 页码
+     */
     private List<Integer> pageNavs;
 
     /**
@@ -70,31 +73,47 @@ public class SearchResult {
 
     @Data
     public static class BrandVo {
-
+        /**
+         * 品牌id
+         */
         private Long brandId;
-
+        /**
+         * 品牌名字
+         */
         private String brandName;
-
+        /**
+         * 品牌图片
+         */
         private String brandImg;
     }
 
 
     @Data
     public static class AttrVo {
-
+        /**
+         * 属性id
+         */
         private Long attrId;
-
+        /**
+         * 属性名字
+         */
         private String attrName;
-
+        /**
+         * 属性值
+         */
         private List<String> attrValue;
     }
 
 
     @Data
     public static class CatalogVo {
-
+        /**
+         * 分类id
+         */
         private Long catalogId;
-
-        private String catalogName;
+        /**
+         * 品牌名字
+         */
+        private String CatalogName;
     }
 }

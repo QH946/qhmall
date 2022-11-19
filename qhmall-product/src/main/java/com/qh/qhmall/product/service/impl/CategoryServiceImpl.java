@@ -1,7 +1,5 @@
 package com.qh.qhmall.product.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -20,14 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 
@@ -80,7 +74,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      */
     @Override
     public void removeMenuByIds(List<Long> asList) {
-        //TODO 检查当前删除的菜单，是否被别的地方引用
+        //检查当前删除的菜单，是否被别的地方引用
         List<CategoryBrandRelationEntity> categoryBrandRelation =
                 categoryBrandRelationService.list(new QueryWrapper<CategoryBrandRelationEntity>()
                         .in("catelog_id", asList));
@@ -169,7 +163,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         //查询所有一级分分类并封装成vo
         List<CategoryEntity> level1Categories = getParentCid(selectList, 0L);
         return level1Categories.stream().collect(Collectors.toMap(k -> k.getCatId().toString(), v -> {
-            //查询一级分类的二级分类并封装成vo
+            //查询一级分类下的二级分类并封装成vo
             List<CategoryEntity> categoryEntities = getParentCid(selectList, v.getCatId());
             List<Catelog2Vo> catelog2Vos = null;
             if (categoryEntities != null) {
@@ -177,6 +171,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                     Catelog2Vo catelog2Vo =
                             new Catelog2Vo(v.getCatId().toString(), null,
                                     l2.getCatId().toString(), l2.getName());
+                    //查询二级分类下的三级分类并封装成vo
                     List<CategoryEntity> level3Catelog = getParentCid(selectList, l2.getCatId());
                     if (level3Catelog != null) {
                         List<Catelog2Vo.Category3Vo> category3Vos =
@@ -191,13 +186,16 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         }));
     }
 
+/*
     public Map<String, List<Catelog2Vo>> getCatalogJson2() {
         //给缓存中放json字符串，拿出的json字符串，反序列为能用的对象
-        /**
+        */
+/**
          * 1、空结果缓存：解决缓存穿透问题
          * 2、设置过期时间(加随机值)：解决缓存雪崩
          * 3、加锁：解决缓存击穿问题
-         */
+         *//*
+
         //1、加入缓存逻辑,缓存中存的数据是json字符串
         //JSON跨语言。跨平台兼容。
         ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
@@ -212,6 +210,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return JSON.parseObject(catalogJson, new TypeReference<Map<String, List<Catelog2Vo>>>() {
         });
     }
+*/
 
     /**
      * 从数据库查询并封装数据::分布式锁
@@ -222,7 +221,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      *
      * @return
      */
-    public Map<String, List<Catelog2Vo>> getCatalogJsonFromDbWithRedissonLock() {
+   /* public Map<String, List<Catelog2Vo>> getCatalogJsonFromDbWithRedissonLock() {
         //（锁的粒度，越细越快:具体缓存的是某个数据，11号商品） product-11-lock
         //RLock catalogJsonLock = redissonClient.getLock("catalogJson-lock");
         RReadWriteLock readWriteLock = redissonClient.getReadWriteLock("catalogJson-lock");
@@ -236,14 +235,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
             rLock.unlock();
         }
         return dataFromDb;
-    }
+    }*/
 
     /**
      * 从数据库查询并封装数据::分布式锁
      *
      * @return
      */
-    public Map<String, List<Catelog2Vo>> getCatalogJsonFromDbWithRedisLock() {
+/*    public Map<String, List<Catelog2Vo>> getCatalogJsonFromDbWithRedisLock() {
         //1、占分布式锁。去redis占坑设置过期时间必须和加锁是同步的，保证原子性（避免死锁）
         String uuid = UUID.randomUUID().toString();
         Boolean lock = stringRedisTemplate.opsForValue().setIfAbsent("lock", uuid, 300, TimeUnit.SECONDS);
@@ -272,13 +271,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
             //自旋的方式
             return getCatalogJsonFromDbWithRedisLock();
         }
-    }
+    }*/
 
     /**
      * 查询二级三级分类数据::redis缓存
      *
      * @return {@link Map}<{@link String}, {@link List}<{@link Catelog2Vo}>>
      */
+/*
     private Map<String, List<Catelog2Vo>> getDataFromDb() {
         //得到锁以后，我们应该再去缓存中确定一次，如果没有才需要继续查询
         String catalogJson = stringRedisTemplate.opsForValue().get("catalogJson");
@@ -318,13 +318,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         stringRedisTemplate.opsForValue().set("catalogJson", valueJson, 1, TimeUnit.DAYS);
         return parentCid;
     }
+*/
 
     /**
      * 从数据库查询并封装数据::本地锁
      *
      * @return
      */
-    public Map<String, List<Catelog2Vo>> getCatalogJsonFromDbWithLocalLock() {
+ /*   public Map<String, List<Catelog2Vo>> getCatalogJsonFromDbWithLocalLock() {
         // //如果缓存中有就用缓存的
         // Map<String, List<Catelog2Vo>> catalogJson = (Map<String, List<Catelog2Vo>>) cache.get("catalogJson");
         // if (cache.get("catalogJson") == null) {
@@ -333,14 +334,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // }
         //只要是同一把锁，就能锁住这个锁的所有线程
         //1、synchronized (this)：SpringBoot所有的组件在容器中都是单例的。
-        //TODO 本地锁：synchronized，JUC（Lock),在分布式情况下，想要锁住所有，必须使用分布式锁
+        // 本地锁：synchronized，JUC（Lock),在分布式情况下，想要锁住所有，必须使用分布式锁
         synchronized (this) {
             //得到锁以后，我们应该再去缓存中确定一次，如果没有才需要继续查询
             return getDataFromDb();
         }
 
     }
-
+*/
     /**
      * 查询当前等级分类下的子级分类
      *

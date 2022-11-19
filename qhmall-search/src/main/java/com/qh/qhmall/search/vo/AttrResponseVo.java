@@ -4,10 +4,10 @@ import lombok.Data;
 
 
 /**
- * 属性响应
+ * 响应数据
  *
  * @author 清欢
- * @date 2022/11/13 15:38:04
+ * @date 2022/11/19 15:13:27
  */
 @Data
 public class AttrResponseVo {
