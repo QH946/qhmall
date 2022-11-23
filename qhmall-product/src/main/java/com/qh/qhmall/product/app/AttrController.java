@@ -88,7 +88,7 @@ public class AttrController {
      * 查询属性详细
      */
     @GetMapping("/info/{attrId}")
-    public R info(@PathVariable("attrId") Long attrId){
+    public R attrInfo(@PathVariable("attrId") Long attrId){
         AttrRespVo respVo = attrService.getAttrInfo(attrId);
         return R.ok().put("attr", respVo);
     }

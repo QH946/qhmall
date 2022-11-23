@@ -4,9 +4,12 @@ package com.qh.qhmall.search.vo;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+
 /**
- * @author LuJuncheng
- * @version 1.0
+ * 响应数据
+ *
+ * @author 清欢
+ * @date 2022/11/23 17:56:18
  */
 @Data
 public class AttrResponseVo {
