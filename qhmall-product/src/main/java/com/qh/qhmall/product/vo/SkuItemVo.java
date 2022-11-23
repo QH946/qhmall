@@ -14,7 +14,7 @@ import java.util.List;
  * SKU的详情
  *
  * @author 清欢
- * @date 2022/11/16 21:42:18
+ * @date 2022/11/22 20:38:09
  */
 @ToString
 @Data

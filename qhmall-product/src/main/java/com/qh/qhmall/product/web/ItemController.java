@@ -12,6 +12,12 @@ import javax.annotation.Resource;
 import java.util.concurrent.ExecutionException;
 
 
+/**
+ * SKU控制器
+ *
+ * @author 清欢
+ * @date 2022/11/22 20:39:52
+ */
 @Controller
 public class ItemController {
 

@@ -14,5 +14,5 @@ public class EsConstant {
      */
     public static final String PRODUCT_INDEX = "qhmall_product";
 
-    public static final Integer PRODUCT_PAGE_SIZE = 2;
+    public static final Integer PRODUCT_PAGE_SIZE = 8;
 }

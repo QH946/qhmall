@@ -1,13 +1,12 @@
 package com.qh.qhmall.search.vo;
 
+
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
-
 /**
- * 响应数据
- *
- * @author 清欢
- * @date 2022/11/19 15:13:27
+ * @author LuJuncheng
+ * @version 1.0
  */
 @Data
 public class AttrResponseVo {
@@ -15,6 +14,7 @@ public class AttrResponseVo {
     /**
      * 属性id
      */
+    @TableId
     private Long attrId;
     /**
      * 属性名
@@ -24,6 +24,10 @@ public class AttrResponseVo {
      * 是否需要检索[0-不需要，1-需要]
      */
     private Integer searchType;
+    /**
+     * 值类型[0-为单个值，1-可以选择多个值]
+     */
+    private Integer valueType;
     /**
      * 属性图标
      */
@@ -52,9 +56,6 @@ public class AttrResponseVo {
     private Long attrGroupId;
 
     private String catelogName;
-
     private String groupName;
-
     private Long[] catelogPath;
-
 }

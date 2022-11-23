@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -60,5 +61,16 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
                     brand.getName());
         }
         //TODO 更新其他关联
+    }
+
+    /**
+     * 批量获取品牌信息
+     *
+     * @param brandIds 品牌标识
+     * @return {@link List}<{@link BrandEntity}>
+     */
+    @Override
+    public List<BrandEntity> getBrandsByIds(List<Long> brandIds) {
+        return baseMapper.selectList(new QueryWrapper<BrandEntity>().in("brand_id", brandIds));
     }
 }

@@ -5,6 +5,9 @@ import com.qh.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 
 /**
@@ -24,5 +27,14 @@ public interface ProductFeignService {
      */
     @GetMapping("/product/attr/info/{attrId}")
     R attrInfo(@PathVariable("attrId") Long attrId);
+
+    /**
+     * 批量获取品牌信息
+     *
+     * @param brandIds 品牌标识
+     * @return {@link R}
+     */
+    @GetMapping("/product/brand/infos")
+    R brandInfo(@RequestParam("brandIds") List<Long> brandIds);
 
 }

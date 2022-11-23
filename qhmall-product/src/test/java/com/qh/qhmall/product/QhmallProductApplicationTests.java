@@ -1,9 +1,11 @@
 package com.qh.qhmall.product;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.qh.qhmall.product.dao.AttrGroupDao;
 import com.qh.qhmall.product.entity.BrandEntity;
 import com.qh.qhmall.product.service.BrandService;
 import com.qh.qhmall.product.service.CategoryService;
+import com.qh.qhmall.product.vo.SpuItemAttrGroupVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,15 @@ import java.util.UUID;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class QhmallProductApplicationTests {
+
+    @Autowired
+    AttrGroupDao attrGroupDao;
+
+    @Test
+    public void testGetAttrGroupWithAttrsBySpuId(){
+        List<SpuItemAttrGroupVo> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(13L, 225L);
+        System.out.println(attrGroupWithAttrsBySpuId);
+    }
 
 
     @Autowired

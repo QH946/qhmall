@@ -7,6 +7,7 @@ import com.qh.qhmall.product.vo.SkuItemVo;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * sku信息
@@ -48,6 +49,6 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
      * @param skuId sku id
      * @return {@link SkuItemVo}
      */
-    SkuItemVo item(Long skuId);
+    SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException;
 }
 

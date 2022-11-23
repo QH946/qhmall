@@ -7,10 +7,10 @@ import java.util.List;
 
 
 /**
- * 获取spu的规格参数信息
+ * spu的规格参数信息
  *
  * @author 清欢
- * @date 2022/11/16 21:44:13
+ * @date 2022/11/22 20:47:27
  */
 @Data
 @ToString

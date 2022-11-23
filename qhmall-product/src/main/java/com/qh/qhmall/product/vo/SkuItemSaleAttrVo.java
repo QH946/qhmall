@@ -7,10 +7,10 @@ import java.util.List;
 
 
 /**
- * 获取spu的销售属性组合
+ * 销售属性
  *
  * @author 清欢
- * @date 2022/11/16 21:44:30
+ * @date 2022/11/22 20:44:02
  */
 @Data
 @ToString

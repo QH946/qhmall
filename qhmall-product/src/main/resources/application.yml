@@ -19,7 +19,7 @@ spring:
     type: redis
     redis:
       time-to-live: 3600000  # 过期时间
-#      key-prefix: CACHE_     # key前缀
+      #      key-prefix: CACHE_     # key前缀
       use-key-prefix: true  # 是否使用写入redis前缀
       cache-null-values: true # 是否缓存空值，防止缓存穿透
 
@@ -34,3 +34,10 @@ mybatis-plus:
 logging:
   level:
     com.qh.qhmall.product.dao: debug
+
+#配置线程池
+qhmall:
+  thread:
+    coreSize: 20
+    maxSize: 200
+    keepAliveTime: 10

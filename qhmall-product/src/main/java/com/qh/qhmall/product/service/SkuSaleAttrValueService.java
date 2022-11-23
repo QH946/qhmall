@@ -3,7 +3,9 @@ package com.qh.qhmall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.product.entity.SkuSaleAttrValueEntity;
+import com.qh.qhmall.product.vo.SkuItemSaleAttrVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,13 @@ import java.util.Map;
 public interface SkuSaleAttrValueService extends IService<SkuSaleAttrValueEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 获取spu的销售属性组合
+     *
+     * @param spuId spu id
+     * @return {@link List}<{@link SkuItemSaleAttrVo}>
+     */
+    List<SkuItemSaleAttrVo> getSaleAttrBySpuId(Long spuId);
 }
 
