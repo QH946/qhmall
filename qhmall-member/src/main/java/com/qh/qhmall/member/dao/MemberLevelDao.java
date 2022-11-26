@@ -13,5 +13,11 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface MemberLevelDao extends BaseMapper<MemberLevelEntity> {
-	
+
+    /**
+     * 获取默认级别
+     *
+     * @return {@link MemberLevelEntity}
+     */
+    MemberLevelEntity getDefaultLevel();
 }

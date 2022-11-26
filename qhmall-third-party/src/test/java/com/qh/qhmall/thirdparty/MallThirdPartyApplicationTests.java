@@ -2,6 +2,7 @@ package com.qh.qhmall.thirdparty;
 
 import com.aliyun.oss.OSSClient;
 import com.qh.common.utils.HttpUtils;
+import com.qh.qhmall.thirdparty.component.SmsComponent;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
@@ -18,11 +19,18 @@ import java.util.Map;
 class MallThirdPartyApplicationTests {
 
     @Resource
-    OSSClient ossClient;
+    private OSSClient ossClient;
+    @Resource
+    private SmsComponent smsComponent;
 
     @Test
     void contextLoads() throws FileNotFoundException {
-        ossClient.putObject("qhmall-hello", "hh.png", new FileInputStream("C:\\Users\\ZSY\\Pictures\\dubhe.png"));
+        ossClient.putObject("qhmall-hello", "hh.png", new FileInputStream("C:\\Users\\qh\\Pictures\\test.png"));
+    }
+
+    @Test
+    public void sendSmsCode() {
+        smsComponent.sendCode("13838383838", "134531");
     }
 
 
@@ -48,7 +56,7 @@ class MallThirdPartyApplicationTests {
         String host = "https://smsmsgs.market.alicloudapi.com";
         String path = "/sms/";
         String method = "GET";
-        String appcode = "93b7e19861a24c519a7548b17dc16d75";
+        String appcode = "";
         Map<String, String> headers = new HashMap<String, String>();
         //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
         headers.put("Authorization", "APPCODE " + appcode);
@@ -57,21 +65,7 @@ class MallThirdPartyApplicationTests {
         queries.put("phone", "13838383838");
         queries.put("skin", "1");
         queries.put("sign", "175622");
-        //JDK 1.8示例代码请在这里下载：  http://code.fegine.com/Tools.zip
         try {
-            /**
-             * 重要提示如下:
-             * HttpUtils请从
-             * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/src/main/java/com/aliyun/api/gateway/demo/util/HttpUtils.java
-             * 或者直接下载：
-             * http://code.fegine.com/HttpUtils.zip
-             * 下载
-             *
-             * 相应的依赖请参照
-             * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/pom.xml
-             * 相关jar包（非pom）直接下载：
-             * http://code.fegine.com/aliyun-jar.zip
-             */
             HttpResponse response = HttpUtils.doGet(host, path, method, headers, queries);
             System.out.println(response.toString()); //如不输出json, 请打开这行代码，打印调试头部状态码。
             //状态码: 200 正常；400 URL无效；401 appCode错误； 403 次数用完； 500 API网管错误

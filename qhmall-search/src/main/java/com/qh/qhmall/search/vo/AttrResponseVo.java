@@ -1,7 +1,6 @@
 package com.qh.qhmall.search.vo;
 
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 
@@ -17,7 +16,6 @@ public class AttrResponseVo {
     /**
      * 属性id
      */
-    @TableId
     private Long attrId;
     /**
      * 属性名

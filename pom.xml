@@ -20,6 +20,7 @@
         <module>qhmall-backend</module>
         <module>qhmall-third-party</module>
         <module>qhmall-search</module>
+        <module>qhmall-auth-server</module>
     </modules>
 
     <!--  这里的属性会被子模块继承  -->

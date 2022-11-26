@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient("qhmall-coupon")
 public interface CouponFeignService {
     @RequestMapping("/coupon/coupon/member/list")
-    public R membercoupons();
+    R membercoupons();
 }

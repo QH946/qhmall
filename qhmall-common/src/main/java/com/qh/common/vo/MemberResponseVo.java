@@ -8,10 +8,10 @@ import java.util.Date;
 
 
 /**
- * 会员请求
+ * 会员响应
  *
- * @author qh
- * @date 2022/10/30 18:37:49
+ * @author 清欢
+ * @date 2022/11/26 14:58:43
  */
 @ToString
 @Data

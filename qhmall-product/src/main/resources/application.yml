@@ -23,6 +23,9 @@ spring:
       use-key-prefix: true  # 是否使用写入redis前缀
       cache-null-values: true # 是否缓存空值，防止缓存穿透
 
+  session:
+    store-type: redis
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
@@ -34,6 +37,7 @@ mybatis-plus:
 logging:
   level:
     com.qh.qhmall.product.dao: debug
+
 
 #配置线程池
 qhmall:

@@ -1,0 +1,11 @@
+server:
+  port: 20000
+
+spring:
+  application:
+    name: qhmall-auth-server
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.174.130:8848
+        file-extension: yml
