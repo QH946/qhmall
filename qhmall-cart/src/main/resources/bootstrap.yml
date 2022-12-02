@@ -1,9 +1,9 @@
 server:
-  port: 20000
+  port: 40000
 
 spring:
   application:
-    name: qhmall-auth-server
+    name: qhmall-cart
   cloud:
     nacos:
       discovery:
@@ -11,3 +11,6 @@ spring:
       config:
         server-addr: 192.168.174.130:8848
         file-extension: yml
+
+
+

@@ -9,7 +9,8 @@
 
 ## 项目介绍
 
-清欢商城项目是一套电商项目，包括前台商城系统以及后台管理系统，基于 SpringCloud、SpringCloud Alibaba、MyBatis Plus实现。前台商城系统包括：用户登录、注册、商品搜索、商品详情、购物车、订单、秒杀活动等模块。后台管理系统包括：系统管理、商品系统、优惠营销、库存系统、订单系统、用户系统、内容管理等七大模块。
+清欢商城项目是一套电商项目，包括前台商城系统以及后台管理系统，基于 SpringCloud、SpringCloud Alibaba、MyBatis
+Plus实现。前台商城系统包括：用户登录、注册、商品搜索、商品详情、购物车、订单、秒杀活动等模块。后台管理系统包括：系统管理、商品系统、优惠营销、库存系统、订单系统、用户系统、内容管理等七大模块。
 
 ## 项目演示
 
@@ -17,35 +18,21 @@
 
 #### 首页
 
-
-
 #### 商品检索
-
-
 
 #### 认证
 
-
-
 #### 商品详情
 
-
-
 #### 购物车
-
-
 
 #### 结算页
 
 #### 支付
 
-
-
 ### 后台管理系统
 
 #### 登录
-
-
 
 #### 商品系统
 
@@ -66,8 +53,6 @@
 [
 
 #### 其他系统
-
-
 
 ## 组织结构
 
@@ -179,38 +164,68 @@ qhmall
 ```
 1、在nginx.conf中添加负载均衡的配置   
 cmd中ipconfig查询本机网关地址/查询部署网关的服务器所在的地址
+在nginx.conf中添加
+  #gzip  on;
+    upstream qhmall{
+      server 192.168.203.1:88;
+    }
 
-upstream qhmall{
-	# 网关的地址
-	server  192.168.43.90:88;
-} 
-   
-2、在qhmall.conf中添加如下配置
-server {
-	# 监听以下域名地址的80端口
+2、覆盖qhmall.conf配置
+    server {
+    # 监听以下域名地址的80端口
     listen       80;
-    server_name  qhmall.com  *.qhmall.com hjl.mynatapp.cc;
+    server_name  qhmall.com  *.qhmall.com;
 
     #charset koi8-r;
     #access_log  /var/log/nginx/log/host.access.log  main;
 
-    #配置静态资源分离
     location /static/ {
-        root   /usr/share/nginx/html;
+       root   /usr/share/nginx/html;
     }
-
-    #支付异步回调的一个配置
-    location /payed/ {
-        proxy_set_header Host order.qhmall.com;        #不让请求头丢失
-        proxy_pass http://qhmall;
+    
+    location /payed/  {
+       proxy_set_header Host order.gulimall.com;
+       proxy_pass http://gulimall;
     }
 
     location / {
-        #root   /usr/share/nginx/html;
-        #index  index.html index.htm;
-        proxy_set_header Host $host;        #不让请求头丢失
+        proxy_set_header Host $host;   #不让请求头丢失
         proxy_pass http://qhmall;
     }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+
 ```
 
 或者直接用项目nginx模块替换本机nginx配置目录文件

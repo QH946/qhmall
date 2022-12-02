@@ -7,9 +7,9 @@
         <artifactId>qh-mall</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mall-search</artifactId>
+    <artifactId>qhmall-search</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mall-search</name>
+    <name>qhmall-search</name>
     <description>Elasticsearch 检索服务</description>
 
     <dependencies>

@@ -4,8 +4,8 @@ package com.qh.common.constant;
 /**
  * 购物车常量
  *
- * @author qh
- * @date 2022/10/30 18:32:37
+ * @author 清欢
+ * @date 2022/12/01  19:35:30
  */
 public class CartConstant {
 
