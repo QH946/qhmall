@@ -58,8 +58,8 @@
     <el-form-item label="原因" prop="reason">
       <el-input v-model="dataForm.reason" placeholder="原因"></el-input>
     </el-form-item>
-    <el-form-item label="描述" prop="description述">
-      <el-input v-model="dataForm.description述" placeholder="描述"></el-input>
+    <el-form-item label="描述" prop="description">
+      <el-input v-model="dataForm.description" placeholder="描述"></el-input>
     </el-form-item>
     <el-form-item label="凭证图片，以逗号隔开" prop="descPics">
       <el-input v-model="dataForm.descPics" placeholder="凭证图片，以逗号隔开"></el-input>
@@ -118,7 +118,7 @@
           skuPrice: '',
           skuRealPrice: '',
           reason: '',
-          description述: '',
+          description: '',
           descPics: '',
           handleNote: '',
           handleMan: '',
@@ -183,7 +183,7 @@
           reason: [
             { required: true, message: '原因不能为空', trigger: 'blur' }
           ],
-          description述: [
+          description: [
             { required: true, message: '描述不能为空', trigger: 'blur' }
           ],
           descPics: [
@@ -244,7 +244,7 @@
                 this.dataForm.skuPrice = data.orderReturnApply.skuPrice
                 this.dataForm.skuRealPrice = data.orderReturnApply.skuRealPrice
                 this.dataForm.reason = data.orderReturnApply.reason
-                this.dataForm.description述 = data.orderReturnApply.description述
+                this.dataForm.description = data.orderReturnApply.description
                 this.dataForm.descPics = data.orderReturnApply.descPics
                 this.dataForm.handleNote = data.orderReturnApply.handleNote
                 this.dataForm.handleMan = data.orderReturnApply.handleMan
@@ -285,7 +285,7 @@
                 'skuPrice': this.dataForm.skuPrice,
                 'skuRealPrice': this.dataForm.skuRealPrice,
                 'reason': this.dataForm.reason,
-                'description述': this.dataForm.description述,
+                'description': this.dataForm.description,
                 'descPics': this.dataForm.descPics,
                 'handleNote': this.dataForm.handleNote,
                 'handleMan': this.dataForm.handleMan,

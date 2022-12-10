@@ -5,7 +5,6 @@ import com.qh.qhmall.product.entity.SkuImagesEntity;
 import com.qh.qhmall.product.entity.SkuInfoEntity;
 import com.qh.qhmall.product.entity.SpuInfoDescEntity;
 import lombok.Data;
-import lombok.ToString;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
  * @author 清欢
  * @date 2022/11/22 20:38:09
  */
-@ToString
 @Data
 public class SkuItemVo {
 

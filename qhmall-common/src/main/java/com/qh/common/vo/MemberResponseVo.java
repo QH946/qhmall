@@ -1,7 +1,6 @@
 package com.qh.common.vo;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,7 +12,6 @@ import java.util.Date;
  * @author 清欢
  * @date 2022/11/26 14:58:43
  */
-@ToString
 @Data
 public class MemberResponseVo implements Serializable {
 

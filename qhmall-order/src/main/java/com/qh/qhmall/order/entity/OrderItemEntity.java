@@ -9,8 +9,9 @@ import java.util.Date;
 import lombok.Data;
 
 /**
+ * 订单项实体
  * 订单项信息
- * 
+ *
  * @author 清欢
  * @email qh@gmail.com
  * @date 2022-10-26 14:42:49

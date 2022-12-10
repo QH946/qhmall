@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 @EnableRedisHttpSession
-@EnableFeignClients(basePackages = "com.qh.qhmall.authserver.feign")
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 public class QhmallAuthServerApplication {

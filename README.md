@@ -128,15 +128,16 @@ qhmall
 
 ### 开发环境
 
-| 工具          | 版本号 | 下载                                                         |
-| ------------- | ------ | ------------------------------------------------------------ |
-| JDK           | 1.8    | https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html |
-| Mysql         | 8.0.28 | [https://www.mysql.com](https://www.mysql.com/)              |
-| Redis         | Redis  | https://redis.io/download                                    |
-| Elasticsearch | 7.6.2  | https://www.elastic.co/downloads                             |
-| Kibana        | 7.6.2  | https://www.elastic.co/cn/kibana                             |
-| RabbitMQ      | 3.8.5  | http://www.rabbitmq.com/download.html                        |
-| Nginx         | 1.1.6  | http://nginx.org/en/download.html                            |
+| 工具            | 版本号        | 下载                                                         |
+|---------------|------------| ----------------------------------------------------------- |
+| JDK           | 1.8        | https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html |
+| Mysql         | 8.0.28     | https://www.mysql.com/            |
+| Redis         | 7.0.5      | https://redis.io/download                                   |
+| Elasticsearch | 7.4.2      | https://www.elastic.co/downloads                            |
+| Kibana        | 7.4.2      | https://www.elastic.co/cn/kibana                            |
+| RabbitMQ      | management | http://www.rabbitmq.com/download.html                       |
+| Nginx         | 1.1.0      | http://nginx.org/en/download.html                           |
+| Nacos         | 2.1.1      | https://nacos.io/zh-cn/index.html                           |
 
 注意：以上的除了jdk都是采用docker方式进行安装，详细安装步骤可参考百度!!!
 
@@ -184,8 +185,8 @@ cmd中ipconfig查询本机网关地址/查询部署网关的服务器所在的�
     }
     
     location /payed/  {
-       proxy_set_header Host order.gulimall.com;
-       proxy_pass http://gulimall;
+       proxy_set_header Host order.qhmall.com;
+       proxy_pass http://qhmall;
     }
 
     location / {

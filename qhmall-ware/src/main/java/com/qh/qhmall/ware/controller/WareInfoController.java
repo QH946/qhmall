@@ -4,6 +4,7 @@ import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
 import com.qh.qhmall.ware.entity.WareInfoEntity;
 import com.qh.qhmall.ware.service.WareInfoService;
+import com.qh.qhmall.ware.vo.FareVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,19 @@ import java.util.Map;
 public class WareInfoController {
     @Autowired
     private WareInfoService wareInfoService;
+
+
+    /**
+     * 获取运费
+     *
+     * @param addrId addr id
+     * @return {@link R}
+     */
+    @GetMapping("/fare")
+    public R getFare(@RequestParam("addrId") Long addrId){
+        FareVo fare= wareInfoService.getFare(addrId);
+        return R.ok().setData(fare);
+    }
 
     /**
      * 查询仓库

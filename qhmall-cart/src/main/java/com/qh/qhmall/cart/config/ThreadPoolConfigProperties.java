@@ -2,6 +2,7 @@ package com.qh.qhmall.cart.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2022/12/01  19:28:12
  */
 @ConfigurationProperties(prefix = "qhmall.thread")
+@Component
 @Data
 public class ThreadPoolConfigProperties {
 

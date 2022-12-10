@@ -65,7 +65,7 @@ CREATE TABLE `wms_purchase` (
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='采购信息';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='采购信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,7 @@ CREATE TABLE `wms_purchase` (
 
 LOCK TABLES `wms_purchase` WRITE;
 /*!40000 ALTER TABLE `wms_purchase` DISABLE KEYS */;
+INSERT INTO `wms_purchase` VALUES (1,2,'leifengyang','15795163648',0,1,NULL,NULL,'2022-10-06 02:47:53','2022-10-06 03:06:56'),(2,1,'admin','13612345678',NULL,4,NULL,NULL,'2022-10-06 06:52:17','2022-10-06 12:36:25'),(3,2,'leifengyang','15795163648',0,1,NULL,NULL,'2022-10-06 08:44:58','2022-10-06 09:15:38'),(4,1,'admin','13612345678',NULL,3,NULL,NULL,'2022-10-06 12:39:17','2022-10-06 12:41:21');
 /*!40000 ALTER TABLE `wms_purchase` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +94,7 @@ CREATE TABLE `wms_purchase_detail` (
   `ware_id` bigint DEFAULT NULL COMMENT '仓库id',
   `status` int DEFAULT NULL COMMENT '状态[0新建，1已分配，2正在采购，3已完成，4采购失败]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +103,7 @@ CREATE TABLE `wms_purchase_detail` (
 
 LOCK TABLES `wms_purchase_detail` WRITE;
 /*!40000 ALTER TABLE `wms_purchase_detail` DISABLE KEYS */;
+INSERT INTO `wms_purchase_detail` VALUES (1,2,1,10,NULL,1,3),(2,2,3,2,NULL,1,4),(4,4,4,44,NULL,1,3),(5,4,5,55,NULL,1,3),(6,4,6,66,NULL,1,3);
 /*!40000 ALTER TABLE `wms_purchase_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +120,7 @@ CREATE TABLE `wms_ware_info` (
   `address` varchar(255) DEFAULT NULL COMMENT '仓库地址',
   `areacode` varchar(20) DEFAULT NULL COMMENT '区域编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='仓库信息';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='仓库信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,6 +129,7 @@ CREATE TABLE `wms_ware_info` (
 
 LOCK TABLES `wms_ware_info` WRITE;
 /*!40000 ALTER TABLE `wms_ware_info` DISABLE KEYS */;
+INSERT INTO `wms_ware_info` VALUES (1,'1号仓库','北京xx','124');
 /*!40000 ALTER TABLE `wms_ware_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +213,7 @@ CREATE TABLE `wms_ware_sku` (
   PRIMARY KEY (`id`),
   KEY `sku_id` (`sku_id`) USING BTREE,
   KEY `ware_id` (`ware_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品库存';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品库存';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,6 +222,7 @@ CREATE TABLE `wms_ware_sku` (
 
 LOCK TABLES `wms_ware_sku` WRITE;
 /*!40000 ALTER TABLE `wms_ware_sku` DISABLE KEYS */;
+INSERT INTO `wms_ware_sku` VALUES (1,1,1,20,'华为',0),(2,4,1,44,'华为HUAWEI Mate 30 Pro 亮黑色 8GB+256GB',0),(3,5,1,55,'华为HUAWEI Mate 30 Pro 翡冷绿 8GB+128GB',0),(4,6,1,66,'华为HUAWEI Mate 30 Pro 翡冷绿 8GB+256GB',0);
 /*!40000 ALTER TABLE `wms_ware_sku` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -231,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-22 22:39:49
+-- Dump completed on 2022-12-10 12:25:53

@@ -1,6 +1,5 @@
 package com.qh.qhmall.cart.config;
 
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +15,6 @@ import java.util.concurrent.TimeUnit;
  * @author 清欢
  * @date 2022/12/01  19:27:58
  */
-@EnableConfigurationProperties(ThreadPoolConfigProperties.class)
 @Configuration
 public class MyThreadConfig {
 

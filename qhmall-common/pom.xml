@@ -68,10 +68,10 @@
             </exclusions>
         </dependency>
         <!--熔断降级、限流-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
+<!--        </dependency>-->
         <!--链路追踪-->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.cloud</groupId>-->

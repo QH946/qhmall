@@ -16,5 +16,13 @@ import java.util.Map;
 public interface WareOrderTaskService extends IService<WareOrderTaskEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 查询最新库存的状态
+     *
+     * @param orderSn 订单sn
+     * @return {@link WareOrderTaskEntity}
+     */
+    WareOrderTaskEntity getOrderTaskByOrderSn(String orderSn);
 }
 

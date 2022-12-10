@@ -53,7 +53,7 @@ public interface CartService {
      *
      * @param cartKey 车钥匙
      */
-    public void clearCartInfo(String cartKey);
+    void clearCartInfo(String cartKey);
 
 
     /**
@@ -87,6 +87,6 @@ public interface CartService {
      *
      * @return {@link List}<{@link CartItemVo}>
      */
-    List<CartItemVo> getUserCartItems();
+    List<CartItemVo> getCurrentUserCartItems();
 
 }

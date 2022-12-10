@@ -2,11 +2,54 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://192.168.174.130:3306/qhmall_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.174.130:3306/qhmall_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false
+
+  redis:
+    host: 192.168.174.130
+    port: 6379
+
+  session:
+    store-type: redis
+
+  rabbitmq:
+    host: 192.168.174.130
+    port: 5672
+    virtual-host: /
+    publisher-confirm-type: correlated #开启发送端确认
+    publisher-returns: true #开启发送端消息抵达队列的确认
+    template:
+      mandatory: true #只要抵达队列，以异步方式优先回调return_confirm
+    listener:
+      simple:
+        acknowledge-mode: manual #设置消费端为手动签收
+
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+
+qhmall:
+  thread:
+    coreSize: 20
+    maxSize: 200
+    keepAliveTime: 10
+
+  alipay:
+    #沙箱APPID
+    app_id: 2021000121698664
+    #商户私钥
+    merchant_private_key: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCUx1XWkApNxcwuLFzSrL5kN02NyVj1FSqql/FxA9Qf79GHGqG5S+gPmVTSMc7uRspMsWM/Xpaj0JUzdi6/HeD9/hZ99Afb9L18Q3g1Kw42X8TloepBRiQygX0IKfnmC+C9ZXwMToqx5E00uk/oaLFc4kJq8gT4GsowgPWKU88LhlOgXO2Y2tfVYtV+OEp48sxUJ95lkqVHhGNYco6/6h0lJvfQCq2DSOHXr93CLyAKeZBG4zp63GldxtdlECBuAKnFiPfNffLFzm+x6usYOnIdWet33vyGZgcXdMyHAXmg55mzir0DPxM/GwzgdFHHe+6ew0CwMq6DYPW8W27wHXLxAgMBAAECggEABn4cdNycVoCHRIyTEG6RcHYpYEKlKyzdS8yNsMzl+O7SSf8Th66UVfnvBa0+xo84TNiA6EcMc+GqYTCLIbQAGZV5Dc4UebjYfA/FsyxJ1n2fbhX+zxJsife0qSKL0Uo7aIiBPVhAHTtFU0O+MPpAozkMhPZC2UDyCePW006M/oewqLElgyEDvxjYIsk2PprUPFsn6/p+0XkIVQxGwmyX9WawEk93lEOHB1Xf5aOtii0X0fK7Jwq/d7gIh6SWPBqEq2+GgjWZv73tWIUFe+UYewEinMTMIxkFDLKwMC6wkP+zv3jqhNvKx9RiA4JrACs0+LDveu4sJs/AAyubbzv18QKBgQD1+aoDOsgkBGLo2FE3FCZjPYRllWQf1fB0MdBTfCh2JarR1Fr0jzSSQi/8+S/PdSJEIjcThE7Ftt/bWj9T6t9Tg/ZQvXyLGM+ORQzwOfPHJDvy/nOSLvFZKe1jjCCVPDp5WvZyt8ali0ig977DryHPaQ+AyDFCB7A3xmmJceOEmwKBgQCa15bKeiHXQKfqLMOJkGItAqSFbBJX+aWsuhevvp9s0Q+Ho6Y+hvTd1BN1xivJE9opf76r/vnmvjg84Hd6dXUMrsIZH2Q6cTtK1CEczNvwEPYVTiY7cpA8RljJCUz0LMw1i1ydj0qhpwHgSESMEsinogSm2vfWu8npBbuZVXaxYwKBgFKeqpFtJB6c7pAhYJ4sgXxiBF+On1PmK18MAFqaYIjWvBrAxlBQ7aqW2sGQ/ZMkV/8ksvU2QrM8atKl7JGGWb8WmxyhmPyrt8Okw+TIwm5IaG6FM1KNu/lkEN2YCrW1xjpO6Gq9+dZPA3U14fieka+2LUPnekwggvspBPfqri4zAoGAZb+PNeQFgsXY0TezEh1PdhZLd+UpNKg2pwbt861GY6IJG299GY9jLrViSDz9nrct36Ey8SCupGKQ3+f8evrd/ISFxS5slT684JH+ZEd1qw3qNtvQobXJc+IiC5DSAY3Cbtjx9hMnzovI3tF+QbFCK216sw4mV/O0XSxINx0CztMCgYAM35QuXEGApxh5M2b4opVggiqfFwenLzzelN2svdwyUihXch5Giyapni85aBGQTuKqF8mUmHqZd/WM6EDTX4iD6ZrchHkB9xvMfgfzyHCmPREwzwM6iR0JlJjDgYKL/gWU1ubX/+sNWUX6IulEeNN/YYRpuUcwUz66hnOpE8esDw==
+    #支付宝公钥
+    alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA00DTeHjomRfYyCNBlJeUE4rQWefbqT1My6E5wS/Yqt2TGL7HrCQK59eosp/N9Fqb37apttmfGky3yTPFNR/zLDu6EP5jLnJHf1JJpQrp8q03yu2RjQNnW9nN68GQasidVX8vK/UvUuYi3x/PI+54/BB2HPYZdFfiIi50YEb/TWTOg1rjhC36Q7GjnGVUHkXF/tLAX40wWwf7sM56CNxzsCixSuaWT+joSgvAavd8UDfXBbh3Eo/PeGPIYvZX+SSty2S2TH0IMPhWApoevF0RT9csy/jStE+tVTFSSXUAEDNltxf9tBbM3eNeiIS55w3yw+YgpdlCCAT3WAaiD1kMQwIDAQAB
+    #支付成功异步回调，返回支付成功相关的信息
+    notify_url: http://member.qhmall.com/memberOrder.html
+    #支付成功后要跳转的页面路径
+    return_url: http://member.qhmall.com/memberOrder.html

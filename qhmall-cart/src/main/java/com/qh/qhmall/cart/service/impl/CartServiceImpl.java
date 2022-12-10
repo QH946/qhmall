@@ -79,7 +79,7 @@ public class CartServiceImpl implements CartService {
             CompletableFuture<Void> getSkuAttrValuesFuture = CompletableFuture.runAsync(() -> {
                 //2、远程查询skuAttrValues组合信息
                 List<String> skuSaleAttrValues = productFeignService.getSkuSaleAttrValues(skuId);
-                cartItemVo.setSkuAttrValues(skuSaleAttrValues);
+                cartItemVo.setSkuAttr(skuSaleAttrValues);
             }, executor);
 
             //等待所有的异步任务全部完成
@@ -218,7 +218,7 @@ public class CartServiceImpl implements CartService {
      * @return {@link List}<{@link CartItemVo}>
      */
     @Override
-    public List<CartItemVo> getUserCartItems() {
+    public List<CartItemVo> getCurrentUserCartItems() {
         List<CartItemVo> cartItemVoList = new ArrayList<>();
         //获取当前用户登录的信息
         UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();

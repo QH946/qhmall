@@ -3,6 +3,7 @@ package com.qh.qhmall.ware.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.ware.entity.WareInfoEntity;
+import com.qh.qhmall.ware.vo.FareVo;
 
 import java.util.Map;
 
@@ -22,5 +23,13 @@ public interface WareInfoService extends IService<WareInfoEntity> {
      * @return {@link PageUtils}
      */
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 获取运费
+     *
+     * @param addrId addr id
+     * @return {@link FareVo}
+     */
+    FareVo getFare(Long addrId);
 }
 

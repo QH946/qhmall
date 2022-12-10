@@ -1,17 +1,19 @@
 package com.qh.qhmall.ware.controller;
 
+import com.qh.common.exception.BizCodeEnum;
+import com.qh.common.exception.NoStockException;
 import com.qh.common.to.SkuHasStockVo;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
 import com.qh.qhmall.ware.entity.WareSkuEntity;
 import com.qh.qhmall.ware.service.WareSkuService;
+import com.qh.qhmall.ware.vo.WareSkuLockVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 
 
 /**
@@ -27,6 +29,21 @@ public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
 
+    /**
+     * 订单锁定库存
+     *
+     * @param vo 签证官
+     * @return {@link R}
+     */
+    @PostMapping("/lock/order")
+    public R orderLockStock(@RequestBody WareSkuLockVo vo){
+        try {
+            Boolean stock = wareSkuService.orderLockStock(vo);
+            return R.ok();
+        }catch (NoStockException e){
+            return R.error(BizCodeEnum.NO_STOCK_EXCEPTION.getCode(), BizCodeEnum.NO_STOCK_EXCEPTION.getMsg());
+        }
+    }
 
     /**
      * 查询sku是否有库存
@@ -34,7 +51,7 @@ public class WareSkuController {
      * @param skuIds sku id
      * @return {@link R}
      */
-    @PostMapping(value = "/hasStock")
+    @PostMapping("/hasStock")
     public R getSkuHasStock(@RequestBody List<Long> skuIds) {
         List<SkuHasStockVo> vos = wareSkuService.getSkuHasStock(skuIds);
         return R.ok().setData(vos);
@@ -44,7 +61,7 @@ public class WareSkuController {
      * 查询库存
      */
     @GetMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = wareSkuService.queryPage(params);
         return R.ok().put("page", page);
     }
@@ -54,8 +71,8 @@ public class WareSkuController {
      * 信息
      */
     @GetMapping("/info/{id}")
-    public R info(@PathVariable("id") Long id){
-		WareSkuEntity wareSku = wareSkuService.getById(id);
+    public R info(@PathVariable("id") Long id) {
+        WareSkuEntity wareSku = wareSkuService.getById(id);
         return R.ok().put("wareSku", wareSku);
     }
 
@@ -63,8 +80,8 @@ public class WareSkuController {
      * 保存
      */
     @PostMapping("/save")
-    public R save(@RequestBody WareSkuEntity wareSku){
-		wareSkuService.save(wareSku);
+    public R save(@RequestBody WareSkuEntity wareSku) {
+        wareSkuService.save(wareSku);
         return R.ok();
     }
 
@@ -72,8 +89,8 @@ public class WareSkuController {
      * 修改
      */
     @PostMapping("/update")
-    public R update(@RequestBody WareSkuEntity wareSku){
-		wareSkuService.updateById(wareSku);
+    public R update(@RequestBody WareSkuEntity wareSku) {
+        wareSkuService.updateById(wareSku);
         return R.ok();
     }
 
@@ -81,8 +98,8 @@ public class WareSkuController {
      * 删除
      */
     @PostMapping("/delete")
-    public R delete(@RequestBody Long[] ids){
-		wareSkuService.removeByIds(Arrays.asList(ids));
+    public R delete(@RequestBody Long[] ids) {
+        wareSkuService.removeByIds(Arrays.asList(ids));
         return R.ok();
     }
 

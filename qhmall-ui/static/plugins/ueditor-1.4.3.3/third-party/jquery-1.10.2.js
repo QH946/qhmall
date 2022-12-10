@@ -1,5 +1,5 @@
 /*!
- * jQuery JavaScript Library v1.10.2
+ * 清欢 JavaScript Library v1.10.2
  * http://jquery.com/
  *
  * Includes Sizzle.js

@@ -137,7 +137,7 @@
         label="原因">
       </el-table-column>
       <el-table-column
-        prop="description述"
+        prop="description"
         header-align="center"
         align="center"
         label="描述">

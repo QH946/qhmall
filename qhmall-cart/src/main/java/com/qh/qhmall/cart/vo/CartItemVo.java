@@ -25,7 +25,7 @@ public class CartItemVo {
     /**
      * 商品套餐属性
      */
-    private List<String> skuAttrValues;
+    private List<String> skuAttr;
 
     private BigDecimal price;
 

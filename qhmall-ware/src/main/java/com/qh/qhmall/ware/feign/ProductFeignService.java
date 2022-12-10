@@ -6,6 +6,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * 商品服务
+ *
+ * @author 清欢
+ * @date 2022/12/04  20:02:58
+ */
 @FeignClient("qhmall-product")
 public interface ProductFeignService {
 
@@ -24,5 +30,5 @@ public interface ProductFeignService {
      * @return
      */
     @RequestMapping("/product/skuinfo/info/{skuId}")
-    public R info(@PathVariable("skuId") Long skuId);
+    R info(@PathVariable("skuId") Long skuId);
 }

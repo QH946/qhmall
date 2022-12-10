@@ -1,7 +1,6 @@
 package com.qh.qhmall.product.vo;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ import java.util.List;
  * @date 2022/11/22 20:47:27
  */
 @Data
-@ToString
 public class SpuItemAttrGroupVo {
 
     private String groupName;

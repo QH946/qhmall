@@ -8,7 +8,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 
 @EnableRedisHttpSession
-@EnableFeignClients(basePackages = "com.qh.qhmall.product.feign")
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
 public class QhmallProductApplication {
