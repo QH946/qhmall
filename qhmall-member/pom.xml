@@ -10,7 +10,7 @@
     <artifactId>qhmall-member</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>qhmall-member</name>
-    <description>清欢商城用户服务</description>
+    <description>商城-用户服务</description>
 
     <dependencies>
         <dependency>

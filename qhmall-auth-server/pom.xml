@@ -10,7 +10,7 @@
     <artifactId>qhmall-auth-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>qhmall-auth-server</name>
-    <description>认证服务（社交登录、Oauth2.0、单点登录）</description>
+    <description>商城-认证服务（社交登录、Oauth2.0、单点登录）</description>
     <dependencies>
         <dependency>
             <groupId>com.qh</groupId>

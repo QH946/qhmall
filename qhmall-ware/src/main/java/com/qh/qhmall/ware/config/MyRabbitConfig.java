@@ -31,16 +31,31 @@ public class MyRabbitConfig {
         return new Jackson2JsonMessageConverter();
     }
 
+    /**
+     * 库存事件交换
+     *
+     * @return {@link Exchange}
+     */
     @Bean
     public Exchange stockEventExchange() {
         return new TopicExchange("stock-event-exchange", true, false);
     }
 
+    /**
+     * 库存释放队列
+     *
+     * @return {@link Queue}
+     */
     @Bean
     public Queue stockReleaseStockQueue() {
         return new Queue("stock.release.stock.queue", true, false, false);
     }
 
+    /**
+     * 库存延时队列
+     *
+     * @return {@link Queue}
+     */
     @Bean
     public Queue stockDelayQueue() {
         Map<String, Object> arguments = new HashMap<>();
@@ -50,11 +65,21 @@ public class MyRabbitConfig {
         return new Queue("stock.delay.queue", true, false, false, arguments);
     }
 
+    /**
+     * 库存释放绑定
+     *
+     * @return {@link Binding}
+     */
     @Bean
     public Binding stockLockedBinding() {
         return new Binding("stock.release.stock.queue", Binding.DestinationType.QUEUE, "stock-event-exchange", "stock.release.#", null);
     }
 
+    /**
+     * 延时队列绑定
+     *
+     * @return {@link Binding}
+     */
     @Bean
     public Binding stockReleaseBinding() {
         return new Binding("stock.delay.queue", Binding.DestinationType.QUEUE, "stock-event-exchange", "stock.locked", null);

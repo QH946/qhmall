@@ -12,4 +12,8 @@ spring:
         server-addr: 192.168.174.130:8848
         file-extension: yml
 
+feign:
+  sentinel:
+    enabled: true
+
 

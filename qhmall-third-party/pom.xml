@@ -10,7 +10,7 @@
     <artifactId>qhmall-third-party</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>qhmall-third-party</name>
-    <description>第三方服务整合</description>
+    <description>商城-第三方服务</description>
 
     <dependencies>
         <dependency>

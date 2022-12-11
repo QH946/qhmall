@@ -11,6 +11,19 @@ spring:
     port: 6379
     host: 192.168.174.130
 
+cloud:
+  sentinel:
+    transport:
+      dashboard: localhost:8333
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true
 
 #配置线程池
 qhmall:

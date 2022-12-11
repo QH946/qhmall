@@ -10,7 +10,7 @@
 
     <artifactId>qhmall-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <description>API网关</description>
+    <description>商城-网关服务</description>
     <name>qhmall-gateway</name>
 
     <dependencies>

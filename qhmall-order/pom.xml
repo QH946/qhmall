@@ -10,7 +10,7 @@
     <artifactId>qhmall-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>qhmall-order</name>
-    <description>清欢商城订单服务</description>
+    <description>商城-订单服务</description>
 
     <dependencies>
         <dependency>

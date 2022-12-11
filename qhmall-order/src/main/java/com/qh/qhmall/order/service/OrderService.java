@@ -1,6 +1,7 @@
 package com.qh.qhmall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qh.common.to.mq.SeckillOrderTo;
 import com.qh.common.utils.PageUtils;
 import com.qh.qhmall.order.entity.OrderEntity;
 import com.qh.qhmall.order.vo.*;
@@ -72,5 +73,12 @@ public interface OrderService extends IService<OrderEntity> {
      * @return {@link String}
      */
     String handlePayResult(PayAsyncVo vo);
+
+    /**
+     * 创建秒杀订单
+     *
+     * @param seckillOrder 秒杀订单
+     */
+    void createSeckillOrder(SeckillOrderTo seckillOrder);
 }
 

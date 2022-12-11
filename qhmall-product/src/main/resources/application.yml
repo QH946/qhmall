@@ -26,6 +26,30 @@ spring:
   session:
     store-type: redis
 
+#  zipkin:
+#    base-url: http://192.168.174.130:9411/ #Zipkin服务器地址
+#    discovery-client-enabled: false #关闭服务发现，否则SpringCloud会把Zipkin的url当作服务名称
+#    sender:
+#      type: web #设置使用http的方式传输数据
+#  sleuth:
+#    sampler:
+#      probability: 1 #设置抽样采集率为100%，默认为10%
+
+
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8333
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
@@ -45,3 +69,5 @@ qhmall:
     coreSize: 20
     maxSize: 200
     keepAliveTime: 10
+
+

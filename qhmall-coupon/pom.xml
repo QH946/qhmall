@@ -10,7 +10,7 @@
     <artifactId>qhmall-coupon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>qhmall-coupon</name>
-    <description>清欢商城优惠券服务</description>
+    <description>商城-优惠券服务</description>
 
     <dependencies>
         <dependency>

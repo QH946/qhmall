@@ -13,3 +13,16 @@ spring:
         sign: 175622
         appcode: b0563c23aff8428c97a54d4f7f9e28e5
 
+    sentinel:
+      transport:
+        dashboard: localhost:8333
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true
+

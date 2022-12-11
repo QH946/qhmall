@@ -1,0 +1,38 @@
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 5
+    execution:
+      pool:
+        core-size: 5
+        max-size: 50
+
+  redis:
+    host: 192.168.174.130
+    port: 6379
+
+  session:
+    store-type: redis
+
+  rabbitmq:
+    host: 192.168.174.130
+    virtual-host: /
+
+  thymeleaf:
+    cache: false
+
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8333
+        port: 8719
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true

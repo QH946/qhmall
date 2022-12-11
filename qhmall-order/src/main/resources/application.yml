@@ -30,6 +30,21 @@ spring:
   mvc:
     date-format: yyyy-MM-dd HH:mm:ss
 
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8333
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+feign:
+  sentinel:
+    enabled: true
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:

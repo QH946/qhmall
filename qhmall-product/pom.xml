@@ -10,7 +10,7 @@
     <artifactId>qhmall-product</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>qhmall-product</name>
-    <description>清欢商城商品服务</description>
+    <description>商城-商品服务</description>
 
     <dependencies>
         <dependency>
@@ -56,6 +56,10 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-zipkin</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

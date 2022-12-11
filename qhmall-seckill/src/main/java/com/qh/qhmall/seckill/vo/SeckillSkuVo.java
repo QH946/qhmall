@@ -1,19 +1,18 @@
-package com.qh.qhmall.product.vo;
+package com.qh.qhmall.seckill.vo;
 
 import lombok.Data;
 
 import java.math.BigDecimal;
 
-
 /**
- * 秒杀商品的优惠信息
+ * 秒杀商品
  *
  * @author 清欢
- * @date 2022/11/16 21:43:56
+ * @date 2022/12/11  15:53:26
  */
 @Data
 public class SeckillSkuVo {
-
+    private Long id;
     /**
      * 活动id
      */
@@ -33,23 +32,14 @@ public class SeckillSkuVo {
     /**
      * 秒杀总量
      */
-    private Integer seckillCount;
+    private int seckillCount;
     /**
      * 每人限购数量
      */
-    private Integer seckillLimit;
+    private int seckillLimit;
     /**
      * 排序
      */
     private Integer seckillSort;
-
-    //当前商品秒杀的开始时间
-    private Long startTime;
-
-    //当前商品秒杀的结束时间
-    private Long endTime;
-
-    //当前商品秒杀的随机码
-    private String randomCode;
 
 }
