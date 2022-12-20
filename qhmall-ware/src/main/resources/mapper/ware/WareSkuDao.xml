@@ -40,10 +40,11 @@
           AND stock - IFNULL(stock_locked, 0) >= #{num}
     </update>
 
-    <update id="unlockStock">
+    <update id="unLockStock">
         UPDATE `wms_ware_sku`
         SET stock_locked = IFNULL(stock_locked, 0) - #{num}
         WHERE sku_id = #{skuId}
           AND ware_id = #{wareId}
     </update>
+
 </mapper>
