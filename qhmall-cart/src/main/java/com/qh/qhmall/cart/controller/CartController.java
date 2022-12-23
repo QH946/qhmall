@@ -77,8 +77,8 @@ public class CartController {
      * @throws ExecutionException   执行异常
      * @throws InterruptedException 中断异常
      */
-    @GetMapping("/addCartItem")
-    public String addCartItem(@RequestParam("skuId") Long skuId,
+    @GetMapping("/addToCart")
+    public String addToCart(@RequestParam("skuId") Long skuId,
                               @RequestParam("num") Integer num,
                               RedirectAttributes attributes) throws ExecutionException, InterruptedException {
 

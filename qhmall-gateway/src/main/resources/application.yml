@@ -51,7 +51,7 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/qhmall-backend/$\{segment}
 
-        - id: qhmall_host_route # 要放在后面
+        - id: qhmall_host_route # nginx要放在后面
           uri: lb://qhmall-product
           predicates:
             - Host=qhmall.com, item.qhmall.com

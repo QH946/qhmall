@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: qhmall_oms
+-- Host: 192.168.174.130    Database: qhmall_oms
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -96,7 +96,7 @@ CREATE TABLE `oms_order` (
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `order_sn` (`order_sn`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,6 +105,7 @@ CREATE TABLE `oms_order` (
 
 LOCK TABLES `oms_order` WRITE;
 /*!40000 ALTER TABLE `oms_order` DISABLE KEYS */;
+INSERT INTO `oms_order` VALUES (1,1,'202212231740266381606223195462778881',NULL,NULL,NULL,NULL,6099.0000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,1,'202212231757052311606227383827562497',NULL,NULL,NULL,9899.0000,9905.0000,6.0000,0.0000,0.0000,0.0000,NULL,NULL,NULL,4,NULL,NULL,7,9899,9899,NULL,NULL,NULL,NULL,NULL,'qhyyds','13964422066','137000','吉林省','白城市','洮北区','长庆北街',NULL,0,0,NULL,NULL,NULL,NULL,NULL,'2022-12-23 17:57:05'),(6,1,'202212231811401201606231053382189058',NULL,NULL,NULL,9899.0000,9905.0000,6.0000,0.0000,0.0000,0.0000,NULL,NULL,NULL,4,NULL,NULL,7,9899,9899,NULL,NULL,NULL,NULL,NULL,'qhyyds','13964422066','137000','吉林省','白城市','洮北区','长庆北街',NULL,0,0,NULL,NULL,NULL,NULL,NULL,'2022-12-23 18:11:40');
 /*!40000 ALTER TABLE `oms_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +138,7 @@ CREATE TABLE `oms_order_item` (
   `gift_integration` int DEFAULT NULL COMMENT '赠送积分',
   `gift_growth` int DEFAULT NULL COMMENT '赠送成长值',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单项信息';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单项信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,6 +147,7 @@ CREATE TABLE `oms_order_item` (
 
 LOCK TABLES `oms_order_item` WRITE;
 /*!40000 ALTER TABLE `oms_order_item` DISABLE KEYS */;
+INSERT INTO `oms_order_item` VALUES (1,NULL,'202212231740266381606223195462778881',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,6099.0000,NULL,NULL),(4,NULL,'202212231757052311606227383827562497',16,'Apple iPhone 14 Pro Max ',NULL,'12',NULL,44,'Apple iPhone 14 Pro Max (A2896)  支持移动联通电信5G 双卡双待手机','https://qhmall-aurora.oss-cn-beijing.aliyuncs.com/2022-12-23/6ee69bbc-fc2f-4140-86ab-71f9ebdac1f0_iphone14银色.png',9899.0000,1,'颜色：银色;内存：8GB;版本：8+256GB',0.0000,0.0000,0.0000,9899.0000,9899,9899),(6,NULL,'202212231811401201606231053382189058',16,'Apple iPhone 14 Pro Max ',NULL,'12',NULL,44,'Apple iPhone 14 Pro Max (A2896)  支持移动联通电信5G 双卡双待手机','https://qhmall-aurora.oss-cn-beijing.aliyuncs.com/2022-12-23/6ee69bbc-fc2f-4140-86ab-71f9ebdac1f0_iphone14银色.png',9899.0000,1,'颜色：银色;内存：8GB;版本：8+256GB',0.0000,0.0000,0.0000,9899.0000,9899,9899);
 /*!40000 ALTER TABLE `oms_order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +205,7 @@ CREATE TABLE `oms_order_return_apply` (
   `sku_price` decimal(18,4) DEFAULT NULL COMMENT '商品单价',
   `sku_real_price` decimal(18,4) DEFAULT NULL COMMENT '商品实际支付单价',
   `reason` varchar(200) DEFAULT NULL COMMENT '原因',
-  `description` varchar(500) DEFAULT NULL COMMENT '描述',
+  `description述` varchar(500) DEFAULT NULL COMMENT '描述',
   `desc_pics` varchar(2000) DEFAULT NULL COMMENT '凭证图片，以逗号隔开',
   `handle_note` varchar(500) DEFAULT NULL COMMENT '处理备注',
   `handle_man` varchar(200) DEFAULT NULL COMMENT '处理人员',
@@ -381,4 +383,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-12 19:43:10
+-- Dump completed on 2022-12-23 19:25:23

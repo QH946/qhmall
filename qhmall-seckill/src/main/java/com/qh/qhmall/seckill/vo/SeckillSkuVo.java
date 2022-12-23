@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 秒杀商品
+ * 秒杀活动
  *
  * @author 清欢
  * @date 2022/12/11  15:53:26

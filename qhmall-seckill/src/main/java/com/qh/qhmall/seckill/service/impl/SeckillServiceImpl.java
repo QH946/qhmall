@@ -161,9 +161,11 @@ public class SeckillServiceImpl implements SeckillService {
                 assert range != null;
                 List<String> list = hashOps.multiGet(range);
                 if (list != null) {
-                    return list.stream()
-                            .map(item -> JSON.parseObject(item, SeckillSkuRedisTo.class))
-                            .collect(Collectors.toList());
+                    return list.stream().map(item -> {
+                        SeckillSkuRedisTo redis = JSON.parseObject(item, SeckillSkuRedisTo.class);
+                        //redis.setRandomCode(null); //当前秒杀开始就需要随机码
+                        return redis;
+                    }).collect(Collectors.toList());
                 }
                 break;
             }
@@ -208,6 +210,7 @@ public class SeckillServiceImpl implements SeckillService {
      * 秒杀
      * TODO 上架秒杀商品的时候，每一个数据都有过期时间
      * TODO 完善秒杀后续的流程，当前简化了收货地址等信息
+     *
      * @param killId 杀死id
      * @param key    关键
      * @param num    全国矿工工会

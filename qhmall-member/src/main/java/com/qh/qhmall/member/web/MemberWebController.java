@@ -16,7 +16,7 @@ import java.util.Map;
 public class MemberWebController {
 
     @Autowired
-    OrderFeignService orderFeignService;
+    private OrderFeignService orderFeignService;
 
     @GetMapping("/memberOrder.html")
     public String memberOrderPage(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum, Model model){

@@ -38,7 +38,7 @@ public class CategoryBrandRelationController {
      * @return {@link R}
      */
     @GetMapping("/brands/list")
-    public R relationBrandsList(@RequestParam(value = "catId", required = true) Long catId) {
+    public R relationBrandsList(@RequestParam(value = "catId") Long catId) {
         List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
         List<BrandVo> collect = vos.stream().map(item -> {
             BrandVo brandVo = new BrandVo();

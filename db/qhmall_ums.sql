@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: qhmall_ums
+-- Host: 192.168.174.130    Database: qhmall_ums
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -99,7 +99,7 @@ CREATE TABLE `ums_member` (
   `access_token` varchar(255) DEFAULT NULL COMMENT '访问令牌',
   `expires_in` varchar(255) DEFAULT NULL COMMENT '访问令牌的时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,6 +108,7 @@ CREATE TABLE `ums_member` (
 
 LOCK TABLES `ums_member` WRITE;
 /*!40000 ALTER TABLE `ums_member` DISABLE KEYS */;
+INSERT INTO `ums_member` VALUES (1,1,'qhyyds','$2a$10$ygcT37VQo/VZ26k9SPFrjeW64v3pS0Y3XdWzsZQRYxPyVljzZ82S.','qhyyds','13964422066',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2022-12-22 18:59:08',NULL,NULL,'0');
 /*!40000 ALTER TABLE `ums_member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +244,7 @@ CREATE TABLE `ums_member_receive_address` (
   `areacode` varchar(15) DEFAULT NULL COMMENT '省市区代码',
   `default_status` tinyint(1) DEFAULT NULL COMMENT '是否默认',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员收货地址';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='会员收货地址';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,6 +253,7 @@ CREATE TABLE `ums_member_receive_address` (
 
 LOCK TABLES `ums_member_receive_address` WRITE;
 /*!40000 ALTER TABLE `ums_member_receive_address` DISABLE KEYS */;
+INSERT INTO `ums_member_receive_address` VALUES (1,1,'qhyyds','13964422066','137000','吉林省','白城市','洮北区','长庆北街','6666',NULL);
 /*!40000 ALTER TABLE `ums_member_receive_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,4 +333,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-12 19:42:44
+-- Dump completed on 2022-12-23 19:25:43

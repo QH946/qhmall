@@ -1,8 +1,8 @@
 spring:
   cloud:
     alicloud:
-      access-key: LTAI4FwvfjSycd1APnuG9bjj
-      secret-key: O6xaxyiWfSIitcOkSuK27ju4hXT5Hl
+      access-key: LTAI5tC9bY6W6CYfa4gA1JJR
+      secret-key: Weh7IhKk2l6BkACKSwKBnfafJ6qJPq
       oss:
         endpoint: oss-cn-beijing.aliyuncs.com
         bucket: qhmall-aurora

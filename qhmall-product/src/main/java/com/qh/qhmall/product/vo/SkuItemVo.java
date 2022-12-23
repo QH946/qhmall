@@ -24,7 +24,7 @@ public class SkuItemVo {
     private boolean hasStock = true;
 
     //2、sku的图片信息    pms_sku_images
-    private List<SkuImagesEntity> images;
+    private List<SkuImagesEntity> imagesEntities;
 
     //3、获取spu的销售属性组合
     private List<SkuItemSaleAttrVo> saleAttr;
@@ -36,6 +36,6 @@ public class SkuItemVo {
     private List<SpuItemAttrGroupVo> groupAttrs;
 
     //6、秒杀商品的信息
-    private SeckillSkuInfoVo seckillSkuVo;
+    private SeckillSkuInfoVo seckillInfo;
 
 }

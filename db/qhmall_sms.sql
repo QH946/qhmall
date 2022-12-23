@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: qhmall_sms
+-- Host: 192.168.174.130    Database: qhmall_sms
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -240,7 +240,7 @@ CREATE TABLE `sms_member_price` (
   `member_price` decimal(18,4) DEFAULT NULL COMMENT '会员对应价格',
   `add_other` tinyint(1) DEFAULT NULL COMMENT '可否叠加其他优惠[0-不可叠加优惠，1-可叠加]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品会员价格';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品会员价格';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,6 +249,7 @@ CREATE TABLE `sms_member_price` (
 
 LOCK TABLES `sms_member_price` WRITE;
 /*!40000 ALTER TABLE `sms_member_price` DISABLE KEYS */;
+INSERT INTO `sms_member_price` VALUES (1,36,2,'黄金会员',7499.0000,1),(2,36,3,'白金会员',7299.0000,1),(3,36,4,'钻石会员',6999.0000,1);
 /*!40000 ALTER TABLE `sms_member_price` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +296,7 @@ CREATE TABLE `sms_seckill_session` (
   `status` tinyint(1) DEFAULT NULL COMMENT '启用状态',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='秒杀活动场次';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='秒杀活动场次';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,6 +305,7 @@ CREATE TABLE `sms_seckill_session` (
 
 LOCK TABLES `sms_seckill_session` WRITE;
 /*!40000 ALTER TABLE `sms_seckill_session` DISABLE KEYS */;
+INSERT INTO `sms_seckill_session` VALUES (7,'双十二','2022-12-23 00:00:00','2022-12-24 00:00:00',1,'2022-12-23 17:34:19');
 /*!40000 ALTER TABLE `sms_seckill_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -346,13 +348,13 @@ CREATE TABLE `sms_seckill_sku_relation` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
   `promotion_id` bigint DEFAULT NULL COMMENT '活动id',
   `promotion_session_id` bigint DEFAULT NULL COMMENT '活动场次id',
-  `sku_id` bigint DEFAULT NULL COMMENT '商品id',
+  `sku_id` bigint DEFAULT NULL COMMENT '商品库存id',
   `seckill_price` decimal(10,4) DEFAULT NULL COMMENT '秒杀价格',
   `seckill_count` int DEFAULT NULL COMMENT '秒杀总量',
   `seckill_limit` int DEFAULT NULL COMMENT '每人限购数量',
   `seckill_sort` int DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='秒杀活动商品关联';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='秒杀活动商品关联';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,6 +363,7 @@ CREATE TABLE `sms_seckill_sku_relation` (
 
 LOCK TABLES `sms_seckill_sku_relation` WRITE;
 /*!40000 ALTER TABLE `sms_seckill_sku_relation` DISABLE KEYS */;
+INSERT INTO `sms_seckill_sku_relation` VALUES (17,NULL,7,29,6099.0000,10,1,1),(18,NULL,7,40,9099.0000,20,1,2);
 /*!40000 ALTER TABLE `sms_seckill_sku_relation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,12 +376,12 @@ DROP TABLE IF EXISTS `sms_sku_full_reduction`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sms_sku_full_reduction` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `sku_id` bigint DEFAULT NULL COMMENT 'spu_id',
+  `sku_id` bigint DEFAULT NULL COMMENT 'sku_id',
   `full_price` decimal(18,4) DEFAULT NULL COMMENT '满多少',
   `reduce_price` decimal(18,4) DEFAULT NULL COMMENT '减多少',
   `add_other` tinyint(1) DEFAULT NULL COMMENT '是否参与其他优惠',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品满减信息';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品满减信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,6 +390,7 @@ CREATE TABLE `sms_sku_full_reduction` (
 
 LOCK TABLES `sms_sku_full_reduction` WRITE;
 /*!40000 ALTER TABLE `sms_sku_full_reduction` DISABLE KEYS */;
+INSERT INTO `sms_sku_full_reduction` VALUES (1,36,10000.0000,50.0000,NULL);
 /*!40000 ALTER TABLE `sms_sku_full_reduction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,7 +409,7 @@ CREATE TABLE `sms_sku_ladder` (
   `price` decimal(18,4) DEFAULT NULL COMMENT '折后价',
   `add_other` tinyint(1) DEFAULT NULL COMMENT '是否叠加其他优惠[0-不可叠加，1-可叠加]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品阶梯价格';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品阶梯价格';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -414,6 +418,7 @@ CREATE TABLE `sms_sku_ladder` (
 
 LOCK TABLES `sms_sku_ladder` WRITE;
 /*!40000 ALTER TABLE `sms_sku_ladder` DISABLE KEYS */;
+INSERT INTO `sms_sku_ladder` VALUES (1,36,3,0.98,NULL,1);
 /*!40000 ALTER TABLE `sms_sku_ladder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -431,7 +436,7 @@ CREATE TABLE `sms_spu_bounds` (
   `buy_bounds` decimal(18,4) DEFAULT NULL COMMENT '购物积分',
   `work` tinyint(1) DEFAULT NULL COMMENT '优惠生效情况[1111（四个状态位，从右到左）;0 - 无优惠，成长积分是否赠送;1 - 无优惠，购物积分是否赠送;2 - 有优惠，成长积分是否赠送;3 - 有优惠，购物积分是否赠送【状态位0：不赠送，1：赠送】]',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品spu积分设置';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品spu积分设置';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -440,7 +445,7 @@ CREATE TABLE `sms_spu_bounds` (
 
 LOCK TABLES `sms_spu_bounds` WRITE;
 /*!40000 ALTER TABLE `sms_spu_bounds` DISABLE KEYS */;
-INSERT INTO `sms_spu_bounds` VALUES (1,15,500.0000,500.0000,NULL),(2,16,50.0000,500.0000,NULL),(3,17,50.0000,500.0000,NULL),(4,18,20.0000,300.0000,NULL);
+INSERT INTO `sms_spu_bounds` VALUES (1,15,500.0000,500.0000,NULL),(2,16,50.0000,500.0000,NULL),(3,17,50.0000,500.0000,NULL),(4,18,20.0000,300.0000,NULL),(5,14,100.0000,100.0000,NULL),(6,15,100.0000,100.0000,NULL),(7,16,120.0000,120.0000,NULL);
 /*!40000 ALTER TABLE `sms_spu_bounds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -484,4 +489,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-12 19:42:52
+-- Dump completed on 2022-12-23 19:25:36

@@ -1,20 +1,14 @@
 package com.qh.qhmall.coupon.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.qh.qhmall.coupon.entity.SeckillSkuRelationEntity;
-import com.qh.qhmall.coupon.service.SeckillSkuRelationService;
 import com.qh.common.utils.PageUtils;
 import com.qh.common.utils.R;
+import com.qh.qhmall.coupon.entity.SeckillSkuRelationEntity;
+import com.qh.qhmall.coupon.service.SeckillSkuRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
@@ -34,8 +28,7 @@ public class SeckillSkuRelationController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("coupon:seckillskurelation:list")
+    @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = seckillSkuRelationService.queryPage(params);
 

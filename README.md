@@ -42,15 +42,15 @@ Plus实现。前台商城系统包括：用户登录、注册、商品搜索、�
 
 **平台属性**
 
-[
+
 
 **商品管理**
 
-[
+
 
 **发布商品**
 
-[
+
 
 #### 其他系统
 
@@ -70,6 +70,7 @@ qhmall
 ├── qhmall-seckill -- 秒杀服务
 ├── qhmall-third-party -- 第三方服务（对象存储、短信）
 ├── qhmall-ware -- 仓储服务
+├── qhmall-backend -- 后台管理服务
 └── qhmall-member -- 会员服务
 ```
 
@@ -231,5 +232,5 @@ cmd中ipconfig查询本机网关地址/查询部署网关的服务器所在的�
 
 或者直接用项目nginx模块替换本机nginx配置目录文件
 
-- 克隆前端项目 `renren-fast-vue` 以 `npm run dev` 方式去运行
+- 前端服务 `qhmall-backend` 以 `npm install`  `npm run dev` 方式去运行
 - 克隆整个后端项目 `qhmall` ，并导入 IDEA 中完成编译

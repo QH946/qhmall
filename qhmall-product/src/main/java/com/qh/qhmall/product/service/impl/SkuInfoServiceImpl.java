@@ -173,16 +173,16 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         //sku的图片信息    pms_sku_images
         CompletableFuture<Void> imageFuture = CompletableFuture.runAsync(() -> {
             List<SkuImagesEntity> imagesEntities = skuImagesService.getImagesBySkuId(skuId);
-            skuItemVo.setImages(imagesEntities);
+            skuItemVo.setImagesEntities(imagesEntities);
         }, executor);
 
-        //查询当前商品是否是秒杀商品
+        //查询当前商品是否参与秒杀优惠
         CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
             R seckillInfo = seckillFeignService.getSkuSeckillInfo(skuId);
             if (seckillInfo.getCode() == 0) {
                 SeckillSkuInfoVo seckillSkuInfoVo = seckillInfo.getData(new TypeReference<SeckillSkuInfoVo>() {
                 });
-                skuItemVo.setSeckillSkuVo(seckillSkuInfoVo);
+                skuItemVo.setSeckillInfo(seckillSkuInfoVo);
             }
         }, executor);
         //等待所有任务都完成

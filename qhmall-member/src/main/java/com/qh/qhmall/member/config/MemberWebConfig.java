@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MemberWebConfig implements WebMvcConfigurer {
     @Autowired
-    LoginUserInterceptor loginUserInterceptor;
+    private LoginUserInterceptor loginUserInterceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(loginUserInterceptor).addPathPatterns("/**");

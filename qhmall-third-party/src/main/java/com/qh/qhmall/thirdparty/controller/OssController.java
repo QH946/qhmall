@@ -19,7 +19,7 @@ import java.util.Map;
 public class OssController {
 
     @Autowired
-    OSS ossClient;
+    private OSS ossClient;
 
     @Value("${spring.cloud.alicloud.oss.endpoint}")
     private String endpoint;
@@ -34,7 +34,7 @@ public class OssController {
     public R policy() {
 
 
-        //https://qhmall-hello.oss-cn-beijing.aliyuncs.com/hahaha.jpg
+        //https://qhmall-aurora.oss-cn-beijing.aliyuncs.com/hahaha.jpg
 
         String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
         // callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。

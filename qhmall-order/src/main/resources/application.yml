@@ -65,6 +65,6 @@ qhmall:
     #支付宝公钥
     alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA00DTeHjomRfYyCNBlJeUE4rQWefbqT1My6E5wS/Yqt2TGL7HrCQK59eosp/N9Fqb37apttmfGky3yTPFNR/zLDu6EP5jLnJHf1JJpQrp8q03yu2RjQNnW9nN68GQasidVX8vK/UvUuYi3x/PI+54/BB2HPYZdFfiIi50YEb/TWTOg1rjhC36Q7GjnGVUHkXF/tLAX40wWwf7sM56CNxzsCixSuaWT+joSgvAavd8UDfXBbh3Eo/PeGPIYvZX+SSty2S2TH0IMPhWApoevF0RT9csy/jStE+tVTFSSXUAEDNltxf9tBbM3eNeiIS55w3yw+YgpdlCCAT3WAaiD1kMQwIDAQAB
     #支付成功异步回调，返回支付成功相关的信息
-    notify_url: http://member.qhmall.com/memberOrder.html
+    notify_url: http://3w3og6u9cw.51same.vip/payed/notify
     #支付成功后要跳转的页面路径
     return_url: http://member.qhmall.com/memberOrder.html

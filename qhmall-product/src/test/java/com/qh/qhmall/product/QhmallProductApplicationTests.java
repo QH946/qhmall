@@ -27,7 +27,7 @@ public class QhmallProductApplicationTests {
     AttrGroupDao attrGroupDao;
 
     @Test
-    public void testGetAttrGroupWithAttrsBySpuId(){
+    public void testGetAttrGroupWithAttrsBySpuId() {
         List<SpuItemAttrGroupVo> attrGroupWithAttrsBySpuId = attrGroupDao.getAttrGroupWithAttrsBySpuId(13L, 225L);
         System.out.println(attrGroupWithAttrsBySpuId);
     }
@@ -74,27 +74,28 @@ public class QhmallProductApplicationTests {
         });
     }
 
-    //    @Test
+//    @Test
 //    public void testUpload() throws FileNotFoundException {
 //        // Endpoint以杭州为例，其它Region请按实际情况填写。
 //        String endpoint = "oss-cn-beijing.aliyuncs.com";
 //        // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建。
-//        String accessKeyId = "LTAI5t5ZBiEYocB7qkRRRvkd";
-//        String accessKeySecret = "CB5M5aJdkp6dQYYfVBM41kx1nH5EQy";
+//        String accessKeyId = "LTAI5tC9bY6W6CYfa4gA1JJR";
+//        String accessKeySecret = "Weh7IhKk2l6BkACKSwKBnfafJ6qJPq";
 //
 //        // 创建OSSClient实例。
 //        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 //
 //        // 上传文件流。
-//        InputStream inputStream = new FileInputStream("D:\\05_Doc\\Mall_Resources\\0d40c24b264aa511.jpg");
+//        InputStream inputStream = new FileInputStream("D:\\05_Doc\\Mall_Resources\\5b5e74d0978360a1.jpg");
 //
-//        ossClient.putObject("qhmall-aurora", "0d40c24b264aa511.jpg", inputStream);
+//        ossClient.putObject("qhmall-aurora", "5b5e74d0978360a1.jpg", inputStream);
 //
 //        // 关闭OSSClient。
 //        ossClient.shutdown();
 //
 //        System.out.println("上传成功...");
 //    }
+
     @Test
     public void testFindPath() {
         Long[] catelogPath = categoryService.findCatelogPath(225L);
@@ -107,7 +108,7 @@ public class QhmallProductApplicationTests {
     @Test
     public void testStringRedisTemplate() {
 
-        stringRedisTemplate.opsForValue().set("hello","world_" + UUID.randomUUID().toString());
+        stringRedisTemplate.opsForValue().set("hello", "world_" + UUID.randomUUID().toString());
         String hello = stringRedisTemplate.opsForValue().get("hello");
         System.out.println("之前保存的数据是：" + hello);
     }
