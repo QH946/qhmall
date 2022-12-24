@@ -18,13 +18,15 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: localhost:8333
+        dashboard: 192.168.174.130:8858  # 控制台的安装位置
+        port: 8719 # 与sentinel单独连接的端口
+        client-ip: 192.168.3.1
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: '*'
 feign:
   sentinel:
     enabled: true

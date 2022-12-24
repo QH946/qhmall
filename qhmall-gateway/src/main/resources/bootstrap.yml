@@ -12,8 +12,17 @@ spring:
         server-addr: 192.168.174.130:8848
         file-extension: yml
 
-feign:
-  sentinel:
-    enabled: true
+    sentinel:
+      transport:
+        dashboard: 192.168.174.130:8858  # 控制台的安装位置
+        port: 8719 # 与sentinel单独连接的端口
+        client-ip: 192.168.3.1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 
 

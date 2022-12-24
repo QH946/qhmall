@@ -19,14 +19,14 @@ public class MemberWebController {
     private OrderFeignService orderFeignService;
 
     @GetMapping("/memberOrder.html")
-    public String memberOrderPage(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum, Model model){
+    public String memberOrderPage(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, Model model) {
         //查出用户所有订单列表数据
-        Map<String,Object> page = new HashMap<>();
-        page.put("page",pageNum.toString());
+        Map<String, Object> page = new HashMap<>();
+        page.put("page", pageNum.toString());
         //远程接口（需要先登录）,使用feign拦截器requestInterceptor获取cookies
         R r = orderFeignService.listWithItem(page);
 //        System.out.println(JSON.toJSONString(r));
-        model.addAttribute("orders",r);
+        model.addAttribute("orders", r);
         return "orderList";
     }
 }

@@ -26,26 +26,26 @@ spring:
   session:
     store-type: redis
 
-#  zipkin:
-#    base-url: http://192.168.174.130:9411/ #Zipkin服务器地址
-#    discovery-client-enabled: false #关闭服务发现，否则SpringCloud会把Zipkin的url当作服务名称
-#    sender:
-#      type: web #设置使用http的方式传输数据
-#  sleuth:
-#    sampler:
-#      probability: 1 #设置抽样采集率为100%，默认为10%
-
-
   cloud:
     sentinel:
       transport:
-        dashboard: localhost:8333
+        dashboard: 192.168.174.130:8858  # 控制台的安装位置
+        port: 8719 # 与sentinel单独连接的端口
+        client-ip: 192.168.3.1
+  #  zipkin:
+  #    base-url: http://192.168.174.130:9411/ #Zipkin服务器地址
+  #    discovery-client-enabled: false #关闭服务发现，否则SpringCloud会把Zipkin的url当作服务名称
+  #    sender:
+  #      type: web #设置使用http的方式传输数据
+  #  sleuth:
+  #    sampler:
+  #      probability: 1 #设置抽样采集率为100%，默认为10%
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: '*'
 feign:
   sentinel:
     enabled: true
@@ -60,7 +60,7 @@ mybatis-plus:
 
 logging:
   level:
-    com.qh.qhmall.product.dao: debug
+    com.qh.qhmall: debug #生产环境建议关闭
 
 
 #配置线程池
@@ -69,5 +69,6 @@ qhmall:
     coreSize: 20
     maxSize: 200
     keepAliveTime: 10
+
 
 
